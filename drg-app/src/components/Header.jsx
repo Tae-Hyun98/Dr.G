@@ -21,6 +21,11 @@ const Li=styled.li`
     padding: 5px;
   }
 `
+
+const utilBox=styled.div`
+
+`
+
 export default function Header() {
 
   const active = useMatch('/clansing');
@@ -39,6 +44,10 @@ export default function Header() {
             <Li><NavLink to='/pilling'>크림/밤</NavLink></Li>
           </Ul>
         </nav>
+
+        <utilBox>
+
+        </utilBox>
       </Headers>
     </>
   )

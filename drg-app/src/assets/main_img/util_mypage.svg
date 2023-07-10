@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45">
+    <defs>
+        <style>
+            .cls-1{fill:none}
+            .cls-4{stroke:none}
+            .men_body {fill:#000;}
+            .men_head {stroke:#000;stroke-width:2px;fill:none;}
+        </style>
+    </defs>
+    <g id="ico_util_mypage" transform="translate(-1710.334 -107.605)">
+        <circle cx="22.5" cy="22.5" r="22.5" class="cls-1" transform="translate(1710.334 107.605)"/>
+        <g fill="none">
+            <path d="M6.727 1.528h3.923c5.521 0 8.35 4.626 8.35 7.189V14H-2V8.717C-2 6.154.929 1.528 6.727 1.528z" class="cls-4" transform="translate(1724.086 126.606)"/>
+            <path class="men_body" d="M6.727 3.528c-2.565 0-4.197 1.108-5.114 2.038C.505 6.689 0 7.986 0 8.717V12h17V8.717c0-.74-.487-2.05-1.557-3.181-.867-.916-2.402-2.008-4.793-2.008H6.727m0-2h3.923c5.521 0 8.35 4.626 8.35 7.19V14H-2V8.717c0-2.563 2.93-7.19 8.727-7.19z" transform="translate(1724.086 126.606)"/>
+        </g>
+        <g class="men_head" transform="translate(1726.856 117.606)">
+            <circle cx="6" cy="6" r="6" class="cls-4"/>
+            <circle cx="6" cy="6" r="5" class="cls-1"/>
+        </g>
+    </g>
+</svg>
