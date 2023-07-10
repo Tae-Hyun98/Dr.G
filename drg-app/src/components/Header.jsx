@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink, useMatch } from 'react-router-dom';
+import { Link, NavLink, useMatch } from 'react-router-dom';
 
 const Headers = styled.header`
   display: flex;
@@ -10,21 +10,51 @@ const Headers = styled.header`
 `
 
 const Logo = styled.div`
+  margin-left: 70px;
+`
 
+const Gnb=styled.ul`
 `
-const Ul=styled.ul`
-  display: flex;
-`
+
 const Li=styled.li`
+  display: inline-block;
   a{
+    position: relative;
+    display: block;
     color: #000;
-    padding: 5px;
+    padding: 30px 15px;
+    font-size: 18px;
+    &::before{
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0px;
+      top: 36px;
+      width: 0%;
+      background-color:#2fcab0;
+      opacity: 0.5;
+      z-index: -1;
+      height: 15%;
+      transition: all.3s;
+    }
+    &.active{
+     &::before{
+      width: 100%;
+     }
+    }
   }
 `
 
-/* const utilBox=styled.div`
+const UtilBox=styled.div`
+  display: flex;
+  margin-right: 70px;
+`
 
-` */
+const UtilIcon=styled.div`
+  padding: 0 5px;
+`
+
+
 
 export default function Header() {
 
@@ -33,21 +63,45 @@ export default function Header() {
   return (
     <>
       <Headers>
-        <Logo><NavLink to='/'><img src={process.env.PUBLIC_URL + '/assets/main_img/logo.svg'} alt='logo'/></NavLink></Logo>
+        <Logo><Link to='/'><img src={process.env.PUBLIC_URL + '/assets/main_img/logo.svg'} alt='logo'/></Link></Logo>
 
         <nav>
-          <Ul>
-            <Li><NavLink to='/cleansing' style={({active}) ? active :{}}>클렌징</NavLink></Li>
-            <Li><NavLink to='/pilling'>필링/스크럽</NavLink></Li>
-            <Li><NavLink to='/pilling'>토너/미스트</NavLink></Li>
-            <Li><NavLink to='/pilling'>에센스/앰플</NavLink></Li>
-            <Li><NavLink to='/pilling'>크림/밤</NavLink></Li>
-          </Ul>
+          <Gnb>
+            <Li>
+              <NavLink to='/cleansing' style={({active}) ? active :{}}>클렌징</NavLink>
+            </Li>
+            
+            <Li>
+              <NavLink to='/pilling'>필링/스크럽</NavLink>
+            </Li>
+
+            <Li>
+              <NavLink to='/pilling'>토너/미스트</NavLink>
+            </Li>
+
+            <Li>
+              <NavLink to='/pilling'>에센스/앰플</NavLink>
+            </Li>
+
+            <Li>
+              <NavLink to='/pilling'>크림/밤</NavLink>
+            </Li>
+          </Gnb>
         </nav>
 
-        <utilBox>
+        <UtilBox>
+          <UtilIcon>
+            <Link><img src={process.env.PUBLIC_URL + '/assets/main_img/util_mypage.svg'} alt='마이페이지'/></Link>
+          </UtilIcon>
 
-        </utilBox>
+          <UtilIcon>
+            <Link><img src={process.env.PUBLIC_URL + '/assets/main_img/util_cart.svg'} alt='장바구니'/></Link>
+          </UtilIcon>
+          
+          <UtilIcon>
+            <Link><img src={process.env.PUBLIC_URL + '/assets/main_img/util_search.svg'} alt='검색'/></Link>
+          </UtilIcon>
+        </UtilBox>
       </Headers>
     </>
   )
