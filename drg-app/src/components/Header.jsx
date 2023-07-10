@@ -33,7 +33,7 @@ export default function Header() {
   return (
     <>
       <Headers>
-        <Logo><NavLink to='/'><img src={process.env.PUBLIC_URL + '/assets/logo.svg'} alt='logo'/></NavLink></Logo>
+        <Logo><NavLink to='/'><img src={process.env.PUBLIC_URL + '/assets/main_img/logo.svg'} alt='logo'/></NavLink></Logo>
 
         <nav>
           <Ul>
