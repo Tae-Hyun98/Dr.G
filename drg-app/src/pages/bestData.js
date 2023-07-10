@@ -7,7 +7,8 @@ const bestData = [{
     best: 'BEST',
     tag1: '#진정강한',
     tag2: '#수분크림',
-    price: 62000
+    price: 62000,
+    sale:57
   },
 
   {
@@ -19,7 +20,8 @@ const bestData = [{
     best: 'BEST',
     tag1: '#병풀 바이옴',
     tag2: '#수분크림',
-    price: 68000
+    price: 68000,
+    sale:50
   },
 
   {
@@ -31,7 +33,8 @@ const bestData = [{
     best: 'BEST',
     tag1: '#수분 올인원',
     tag2: '#민감한 남성 피부',
-    price: 64000
+    price: 64000,
+    sale:40
   },
 
   {
@@ -81,7 +84,8 @@ const bestData = [{
     best: 'BEST',
     tag1: '#민감피부',
     tag2: '#무기자차',
-    price: 24000
+    price: 24000,
+    sale:38
   },
 
   {
@@ -105,7 +109,8 @@ const bestData = [{
     desc: 'SPF50+ PA+++<br/>자외선과 외부 유해환경으로부터 보호해주며 피부톤을 밝혀주는 브라이트닝 업 선케어',
     best: 'BEST',
     tag1: '#톤업선크림',
-    price: 32000
+    price: 32000,
+    sale:20
   },
 
   {
@@ -117,7 +122,8 @@ const bestData = [{
     best: 'BEST',
     tag1: '#진정강한',
     tag2: '#천만크림',
-    price: 38000
+    price: 38000,
+    sale:30
   },
 ]
 
