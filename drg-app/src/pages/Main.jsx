@@ -18,16 +18,15 @@ const Visual=styled.div`
   }
   .swiper-pagination{
     width: 100%;
+    bottom: 20px;
     .swiper-pagination-bullet{
       display: inline-block;
       width: 20px;
       height: 20px;
       line-height: 20px;
-      text-align: center;
       font-size: 12px;
       color: #fff;
       background: rgba(47, 202, 176, 0.5);
-      opacity: 0.8;
       &.swiper-pagination-bullet-active{
         background-color: #2fcab0;
       }
@@ -86,6 +85,7 @@ export default function Main() {
       </Visual>
 
 
+      
     </>
   )
 }
