@@ -1,4 +1,4 @@
-const cleansingData= [
+const cleansing= [
     {
       id: 'cleansing01',
       image: process.env.PUBLIC_URL+'/subimg/cleansing/cleansing01.jpg',
@@ -57,7 +57,7 @@ const cleansingData= [
       },
       {
         id: 'cleansing08',
-        image: process.ev.PUBLIC_URL+'/subimg/cleansing/cleansing08.jpg',
+        image: process.env.PUBLIC_URL+'/subimg/cleansing/cleansing08.jpg',
         desc: '우수한 형태 안정성이 특징인 면/폴리에스터 이중지 소재를 사용했습니다.',
         title: '이지팬츠',
         tag : '#공용 #오버핏',
@@ -83,4 +83,4 @@ const cleansingData= [
     
   ]
 
-export default cleansingData
+export default cleansing;

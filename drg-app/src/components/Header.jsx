@@ -22,9 +22,9 @@ const Li=styled.li`
   }
 `
 
-const utilBox=styled.div`
+/* const utilBox=styled.div`
 
-`
+` */
 
 export default function Header() {
 
@@ -37,7 +37,7 @@ export default function Header() {
 
         <nav>
           <Ul>
-            <Li><NavLink to='/clansing' style={({active}) ? active :{}}>클렌징</NavLink></Li>
+            <Li><NavLink to='/cleansing' style={({active}) ? active :{}}>클렌징</NavLink></Li>
             <Li><NavLink to='/pilling'>필링/스크럽</NavLink></Li>
             <Li><NavLink to='/pilling'>토너/미스트</NavLink></Li>
             <Li><NavLink to='/pilling'>에센스/앰플</NavLink></Li>

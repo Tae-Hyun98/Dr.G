@@ -1,20 +1,30 @@
 import React from 'react'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import {useState} from 'react'
-import{Routes, Route, Link, useNavigate, useParams} from 'react-router-dom'; 
+// import{Routes, Route, Link, useNavigate, useParams} from 'react-router-dom'; 
 import './style.css' 
-import cleansingData from './cleansingData';
+import cleansing from './cleansingData'
+import Header from '../components/Header'
 
 
 export default function Cleansing() {
 
-    const [cleansing] = useState(cleansingData)
+    const [cleansings] = useState(cleansing)
 
   return (
     <>
-
-    ddddasdfasd
-        aasdfasdfasdfasdf
+    <Header/>
+    <div>
+      {
+        cleansings.map((cleans,index)=>{
+          return(
+            <div><img src={cleans.image} alt="" /></div>
+           
+          )
+        })
+      }
+    </div>
+    
 
 
     </>
