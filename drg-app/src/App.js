@@ -9,6 +9,8 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Main/>}/>
+        <Route path='/clansing' element={<Main/>}/>
+        <Route path='/' element={<Main/>}/>
       </Routes>
     </div>
 
