@@ -72,19 +72,19 @@ export default function Header() {
             </Li>
             
             <Li>
-              <NavLink to='/pilling'>필링/스크럽</NavLink>
+              <NavLink to='/scrub'>필링/스크럽</NavLink>
             </Li>
 
             <Li>
-              <NavLink to='/pilling'>토너/미스트</NavLink>
+              <NavLink to='/toner'>토너/미스트</NavLink>
             </Li>
 
             <Li>
-              <NavLink to='/pilling'>에센스/앰플</NavLink>
+              <NavLink to='/ample'>에센스/앰플</NavLink>
             </Li>
 
             <Li>
-              <NavLink to='/pilling'>크림/밤</NavLink>
+              <NavLink to='/cream'>크림/밤</NavLink>
             </Li>
           </Gnb>
         </nav>

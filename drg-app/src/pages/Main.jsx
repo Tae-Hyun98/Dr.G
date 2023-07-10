@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {Swiper, SwiperSlide} from 'swiper/react';
-import {  Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import best from './bestData';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const Visual=styled.div`
   width: 100%;
@@ -58,11 +59,21 @@ const BestSlides=styled.div`
   a{
     color:#000;
   }
-  .swiper-slide{
-    width: 270px;
-    margin-right: 20px;
-    &:last-child{
-      margin-right: 0;
+  .bestSwiper{
+    padding-bottom: 20px;
+    .swiper-slide{
+      width: 270px;
+      margin-right: 20px;
+      &:last-child{
+        margin-right: 0;
+      }
+    }
+  }
+  .swiper-scrollbar{
+    color: blue;
+    bottom: 0;
+    .swiper-scrollbar-drag{
+      background-color: yellow;
     }
   }
 `
@@ -76,14 +87,23 @@ const BestImg=styled.div`
     width: 100%;
   }
   .hover_cart{
+    display: flex;
+    align-items: flex-end;
     position: absolute;
     opacity: 0;
     top:0;
     left:0;
     width: 100%;
     height: 100%;
-    background-color:rgba(0,0,0,0.4);
+    background-color:rgba(0,0,0,0.3);
     transition: all.3s;
+    p{
+      width: 100%;
+      padding: 5px 0;
+      background-color: #2fcab0;
+      text-align: center;
+      color: #fff;
+    }
   }
   &:hover{
     .hover_cart{
@@ -214,11 +234,12 @@ export default function Main() {
         <h1>BEST</h1>
         <BestSlides>
           <Swiper
-          modules={[Autoplay, Navigation, Pagination]}
+          modules={[Autoplay, Navigation, Scrollbar]}
           loop={true}
           speed={1000}
           navigation={true}
-          pagination={true}
+          freeMode={true}
+          scrollbar={{draggable: true}}
           /* autoplay={{
             delay: 2500,
             disableOnInteraction: false,
