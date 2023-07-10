@@ -1,10 +1,8 @@
 import React from 'react'
-// import styled from 'styled-components'
 import {useState} from 'react'
 // import{Routes, Route, Link, useNavigate, useParams} from 'react-router-dom'; 
 import './style.css' 
 import cleansing from './cleansingData'
-import Header from '../components/Header'
 import { styled } from 'styled-components'
 
 
@@ -56,7 +54,21 @@ export default function Cleansing() {
               </FlexBox>
 
               <div className="item_title">{cleans.title}  </div>
-              <div className="item_price">{(cleans.price).toLocaleString('ko-KR')}원 </div>
+              <div className="price_wrap"> 
+
+                
+                  {
+                    cleans.sale>0&&<span className="item_sale">{cleans.sale}%</span>
+                  }
+                 
+                  {
+                    cleans.sale>0 ? <span className="item_price line">{(cleans.price).toLocaleString('ko-KR')}원 </span> : <div className="item_price">{(cleans.price).toLocaleString('ko-KR')}원 </div>
+                  } 
+                  {
+                    cleans.sale>0 && <span className="item_last_price">{(cleans.price - ((cleans.price) * (cleans.sale / 100))).toLocaleString('ko-KR')}원</span>
+                  }
+
+              </div>
 
               <div className="item_wish"><span>장바구니</span></div>
 
