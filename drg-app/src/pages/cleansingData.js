@@ -7,7 +7,8 @@ const cleansing = [{
     tag2: '#클렌징',
     tag3: '#저자극',
     category: '클렌징',
-    price: 22000
+    price: 22000,
+    sale : 45
   },
   {
     id: 'cleansing02',
@@ -29,7 +30,8 @@ const cleansing = [{
     tag2: '#클렌징',
     tag3: '#저자극',
     category: '클렌징',
-    price: 20000
+    price: 20000,
+    sale:40
   },
   {
     id: 'cleansing04',
@@ -62,7 +64,8 @@ const cleansing = [{
     tag2: '#클렌징',
     tag3: '#저자극',
     category: '클렌징',
-    price: 24000
+    price: 24000,
+    sale:30
   },
   {
     id: 'cleansing07',
