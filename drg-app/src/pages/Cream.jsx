@@ -24,7 +24,7 @@ const FlexBox = styled.div`
 `
 
 export default function Cream() {
-    const [cream] = useState(cream)
+    const [creams] = useState(cream)
   return (
     <>
       
@@ -35,7 +35,7 @@ export default function Cream() {
     <div className="item_wrap"> 
     
        {
-         cream.map((cream,index) => {
+         creams.map((cream,index) => {
             return(
           <div className="item_box" key={index}>
             <div className="item_img">
@@ -54,19 +54,24 @@ export default function Cream() {
             <div className="item_title">{cream.title}  </div>
             <div className="price_wrap"> 
 
-              
-                {
-                  cleans.sale>0&&<span className="item_sale">{cream.sale}%</span>
-                }
-               
-                {
-                  cleans.sale>0 ? <span className="item_price line">{(cream.price).toLocaleString('ko-KR')}원 </span> : <div className="item_price">{(cream.price).toLocaleString('ko-KR')}원 </div>
-                } 
-                {
-                  cleans.sale>0 && <span className="item_last_price">{(cream.price - ((cream.price) * (cream.sale / 100))).toLocaleString('ko-KR')}원</span>
-                }
+                <div>
+                    {
+                      cleans.sale>0&&<span className="item_sale">{cream.sale}%</span>
+                    }
+                </div>
+                <div >
 
-            </div>
+                    {
+                      cleans.sale>0 && <span className="item_price line">{(cream.price).toLocaleString('ko-KR')}원</span> 
+                    }
+                </div> 
+                <div>
+                    {
+                      cleans.sale>0 ? <div className="item_last_price">{(cream.price - ((cream.price) * (cream.sale / 100))).toLocaleString('ko-KR')}원</div> : <div className="item_last_price">{(cream.price).toLocaleString('ko-KR')}원</div>
+                    }
+                </div>
+
+              </div>
 
             <div className="item_wish"><span>장바구니</span></div>
 
