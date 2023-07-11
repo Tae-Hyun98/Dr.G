@@ -41,7 +41,7 @@ export default function Cleansing() {
            cleansings.map((cleans,index) => {
               return(
             <div className="item_box" key={index}>
-              <Link to={`/cleansingdetail/${index}`}>
+              <Link to={`/cleansing/cleansingdetail/${index}`}>
               <div className="item_img">
                <img src={cleans.image} alt="img" />
                <div className="hover_wish">
