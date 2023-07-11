@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState} from 'react'
-// import{Routes, Route, Link, useNavigate, useParams} from 'react-router-dom'; 
+import{ Link } from 'react-router-dom'; 
 import './style.css' 
 import cleansing from './cleansingData'
 import { styled } from 'styled-components'
@@ -41,6 +41,7 @@ export default function Cleansing() {
            cleansings.map((cleans,index) => {
               return(
             <div className="item_box" key={index}>
+              <Link to={`/cleansingdetail/${index}`}>
               <div className="item_img">
                <img src={cleans.image} alt="img" />
                <div className="hover_wish">
@@ -75,6 +76,7 @@ export default function Cleansing() {
                 </div>
 
               </div>
+              </Link>
 
               <div className="item_wish"><span>장바구니</span></div>
 
