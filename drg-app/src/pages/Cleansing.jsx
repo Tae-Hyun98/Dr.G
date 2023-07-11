@@ -56,17 +56,22 @@ export default function Cleansing() {
               <div className="item_title">{cleans.title}  </div>
               <div className="price_wrap"> 
 
-                
-                  {
-                    cleans.sale>0&&<span className="item_sale">{cleans.sale}%</span>
-                  }
-                 
-                  {
-                    cleans.sale>0 ? <span className="item_price line">{(cleans.price).toLocaleString('ko-KR')}원 </span> : <div className="item_price">{(cleans.price).toLocaleString('ko-KR')}원 </div>
-                  } 
-                  {
-                    cleans.sale>0 && <span className="item_last_price">{(cleans.price - ((cleans.price) * (cleans.sale / 100))).toLocaleString('ko-KR')}원</span>
-                  }
+                <div>
+                    {
+                      cleans.sale>0&&<span className="item_sale">{cleans.sale}%</span>
+                    }
+                </div>
+                <div >
+
+                    {
+                      cleans.sale>0 && <span className="item_price line">{(cleans.price).toLocaleString('ko-KR')}원</span> 
+                    }
+                </div> 
+                <div>
+                    {
+                      cleans.sale>0 ? <div className="item_last_price">{(cleans.price - ((cleans.price) * (cleans.sale / 100))).toLocaleString('ko-KR')}원</div> : <div className="item_last_price">{(cleans.price).toLocaleString('ko-KR')}원</div>
+                    }
+                </div>
 
               </div>
 
