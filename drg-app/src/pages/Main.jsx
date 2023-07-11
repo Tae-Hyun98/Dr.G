@@ -63,9 +63,14 @@ const BestSlides=styled.div`
   a{
     color:#000;
   }
+  .inner{
+      width: 100%;
+      margin: 0 auto;
+    }
   .bestSwiper{
-    width: 100%;
+    width: 1300px;
     padding-bottom: 20px;
+    padding: 0 20px;
     .swiper-slide{
       width: 270px;
       margin-right: 20px;
@@ -73,6 +78,7 @@ const BestSlides=styled.div`
         margin-right: 0;
       }
     }
+   
   }
   .swiper-scrollbar{
     bottom: 0;
@@ -81,7 +87,7 @@ const BestSlides=styled.div`
       background-color: #2fcab0;
     }
   }
-  .swiper-button-prev{left: 0px;z-index:5}
+  .swiper-button-prev{left: -10px;z-index:5}
   .swiper-button-next{right: 0px;z-index:5}
 `
 
@@ -120,7 +126,6 @@ const BestImg=styled.div`
 `
 
 const Container=styled.div`
-  width: 1280px;
   margin: 0 auto;
 `
 
@@ -240,6 +245,8 @@ export default function Main() {
         <Container>
         <h1>BEST</h1>
         <BestSlides>
+        <div className='inner'>
+
           <Swiper
           modules={[Autoplay, Navigation, Scrollbar]}
           loop={true}
@@ -254,7 +261,6 @@ export default function Main() {
           slidesPerView={'auto'}
           className='bestSwiper'
           >
-
             {
               bests.map((best, index) => {
                 return (
@@ -285,8 +291,9 @@ export default function Main() {
               )
               })
             }
-
           </Swiper>
+          </div>
+
         </BestSlides>
         </Container>
       </BestSection>
