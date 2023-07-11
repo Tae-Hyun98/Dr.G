@@ -1,6 +1,4 @@
-import React from 'react'
-import React from 'react'
-import {useState} from 'react'
+import { React,useState } from 'react'
 // import{Routes, Route, Link, useNavigate, useParams} from 'react-router-dom'; 
 import './style.css' 
 import { styled } from 'styled-components'
