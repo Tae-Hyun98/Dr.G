@@ -156,13 +156,23 @@ li{
     margin-right: 2%;
     padding: 40px;
 }
+.detail_img{
+    overflow: hidden;
+    border-radius: 20px;
+
+}
 .detail_left img{
     width: 100%;
     border-radius: 20px;
+    transform: scale(1.15);
+    transition: .8s;
+}
+.detail_left:hover img {
+    transform: scale(1);
 }
 .detail_right{
     width: 49%;
-    padding: 20px 50px;
+    padding: 40px;
 }
 .detail_cate{
     width: 60px;
@@ -202,15 +212,43 @@ li{
 }
 .price_wrapper{
     display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 50px;
     font-size: 22px;
     border-bottom: 2px solid #62d8d4;
 }
 .price_wrapper div{
-    margin-right: 40px;
+    width: 33.3333%;
+    text-align: center;
+    padding-bottom: 10px;
 }
 .price_wrapper div:last-child{
     margin-right: 0;
+}
+
+.btn_wrap{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 28px;
+}   
+
+.total_price{
+    font-size: 28px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.delivery_wrap{
+    margin-top: 50px;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+.delivery_wrap span:first-child{
+    font-weight: bold;
+}
+.free{
+    font-size: 14px;
+    color: #777;
 }

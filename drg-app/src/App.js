@@ -36,7 +36,7 @@ function App() {
 
         <Route path='/login' element={<Login/>}/>
 
-        <Route path='cleansingdetail/:id' element={<CleansingDetail cleansings={cleansings}/>}/>
+        <Route path='cleansing/cleansingdetail/:id' element={<CleansingDetail cleansings={cleansings}/>}/>
 
 
       </Routes>
