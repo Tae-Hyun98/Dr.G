@@ -16,6 +16,7 @@ const Tagbox = styled.div`
   margin-top: 5px;
   font-size: 14px;
   line-height: 22px;
+  border-radius: 10px;
 `
 const FlexBox = styled.div`
   display: flex;
@@ -29,7 +30,7 @@ export default function Cleansing() {
 
   return (
     <>
-      
+      <div className="wrap">
       <div className="menu_tit">
         <h2>클렌징</h2>
       </div>
@@ -69,7 +70,7 @@ export default function Cleansing() {
                 </div> 
                 <div>
                     {
-                      cleans.sale>0 ? <div className="item_last_price">{(cleans.price - ((cleans.price) * (cleans.sale / 100))).toLocaleString('ko-KR')}원</div> : <div className="item_last_price">{(cleans.price).toLocaleString('ko-KR')}원</div>
+                      cleans.sale>0 ? <span className="item_last_price">{(cleans.price - ((cleans.price) * (cleans.sale / 100))).toLocaleString('ko-KR')}원</span> : <span className="item_last_price">{(cleans.price).toLocaleString('ko-KR')}원</span>
                     }
                 </div>
 
@@ -85,7 +86,7 @@ export default function Cleansing() {
           }
       </div>
         
-
+      </div>
 
            
           
