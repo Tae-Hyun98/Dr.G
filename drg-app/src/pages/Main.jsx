@@ -249,9 +249,103 @@ const NewSection = styled.section`
   h1{
     margin-bottom: 30px;
   }
+  img{
+    width: 100%;
+    transition: all .5s ease;
+  }
 `
 
+const NewInner= styled.div`
+  width: 1280px;
+  padding-bottom: 50px;
+  margin: 0 auto;
+  display: flex;
+  .new_box{
+    border-radius: 5px;
+    overflow: hidden;
+    &:hover{
+      img{
+        scale: 1.15;
+      }
+    }
+  }
+  .new_left{
+    position: relative;
+    width: 50%;
+    margin-right: 20px;
+    .new_text{
+      top: 15px;
+      p{
+        &.new_tit{
+         font-size: 26px;
+        }
+        &.hash{
+          font-size: 18px;
+        }
+      }
+    }
+  }
 
+  .new_right{
+    width: 50%;
+    overflow: hidden;
+    .new_box{
+      width: calc(50% - 10px);
+      position: relative;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      float: left;
+      &:nth-child(2n){
+        margin-right: 0;
+      }
+      .new_text{
+        top: 10px;
+        p{
+          &.new_tit{
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+
+  .new_text{
+    width: 100%;
+    position: absolute;
+    p{
+      position: relative;
+      color: #000;
+      text-align: center;
+      &.new_tit{
+        font-weight: 500;
+      }
+      &.hash{
+        text-align: center;
+        z-index: 1;
+
+       &::before{
+        content: '';
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0;
+        width: 40%;
+        background-color:#fff;
+        height: 100%;
+        border-radius: 5px;
+        opacity: 0.7;
+        z-index: -1;
+        }
+   
+      }
+       
+      }
+    }
+`
 
 
 export default function Main() {
@@ -305,22 +399,24 @@ export default function Main() {
 
       <BestSection>
         <Container>
+
         <SectionTitle>BEST</SectionTitle>
+
         <BestSlides>
 
           <Swiper
-          modules={[Autoplay, Navigation, Scrollbar]}
-          loop={true}
-          speed={1000}
-          navigation={true}
-          freeMode={true}
-          scrollbar={{draggable: true}}
-          /* autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }} */
-          slidesPerView={'auto'}
-          className='bestSwiper'
+            modules={[Autoplay, Navigation, Scrollbar]}
+            loop={true}
+            speed={1000}
+            navigation={true}
+            freeMode={true}
+            scrollbar={{draggable: true}}
+            /* autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }} */
+            slidesPerView={'auto'}
+            className='bestSwiper'
           >
             {
               bests.map((best, index) => {
@@ -349,12 +445,12 @@ export default function Main() {
                     </Price>
                   </Link>
                 </SwiperSlide>
-              )
+                )
               })
             }
           </Swiper>
 
-        </BestSlides>
+          </BestSlides>
         </Container>
       </BestSection>
 
@@ -382,6 +478,60 @@ export default function Main() {
 
       <NewSection>
         <SectionTitle>Dr.G의 신상품을 공개합니다.</SectionTitle>
+
+        <NewInner>
+          <div className='new_left'>
+            <div className="new_box">
+              <img src={process.env.PUBLIC_URL + '/assets/main_img/new04.jpg'} alt="new_product" />
+              <div className="new_text">
+                <p className='new_tit'>레드 블레미쉬 시카 클렌징 폼</p>
+                <p className='hash'>#슈퍼시카 #딥클렌징</p>
+              </div>
+            </div>
+          </div>
+
+          <div className='new_right'>
+            <div className="new_box">
+              <img src={process.env.PUBLIC_URL + '/assets/main_img/new06.jpg'} alt="new_product" />
+              <div className="new_text">
+                <p className='new_tit'>프레스티지 마유 크림</p>
+                <p className='hash'>
+                  <span>#EGFX트러플</span>
+                </p>
+              </div>
+            </div>
+
+            <div className="new_box">
+              <img src={process.env.PUBLIC_URL + '/assets/main_img/new03.jpg'} alt="new_product" />
+              <div className="new_text">
+                <p className='new_tit'>에이클리어 스팟 큐어 패치</p>
+                <p className='hash'>
+                  <span>#상처보호</span>
+                </p>
+              </div>
+            </div>
+
+            <div className="new_box">
+              <img src={process.env.PUBLIC_URL + '/assets/main_img/new05.jpg'} alt="new_product" />
+              <div className="new_text">
+                <p className='new_tit'>나이스 버디 업 선 스틱</p>
+                <p className='hash'>
+                 <span>#착붙 선스틱</span>
+                </p>
+              </div>
+            </div>
+
+            <div className="new_box">
+              <img src={process.env.PUBLIC_URL + '/assets/main_img/new08.jpg'} alt="new_product" />
+              <div className="new_text">
+                <p className='new_tit'>레드블레미쉬 수딩 크림</p>
+                <p className='hash'>
+                   #2000만 돌파
+                </p>
+              </div>
+            </div>
+          </div>
+        </NewInner>
       </NewSection>
     </>
   )
