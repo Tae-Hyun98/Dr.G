@@ -11,6 +11,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
+
+const  SectionTitle = styled.h1`
+  text-align: center;
+  font-size: 32px;
+`
 const Visual=styled.div`
   width: 100%;
   .swiper-button-prev{
@@ -50,8 +55,6 @@ const BestSection=styled.section`
   padding-bottom: 90px;
   overflow: hidden;
   h1{
-    font-size: 34px;
-    text-align: center;
     padding-bottom: 10px;
     margin-bottom: 30px;
     border-bottom: 1px solid #ccc;
@@ -191,8 +194,6 @@ const Price=styled.div`
 const EventSection = styled.section`
 padding-bottom: 100px;
   h1{
-    text-align: center;
-    font-size: 34px;
     margin-bottom: 30px;
   }
 
@@ -243,6 +244,14 @@ padding-bottom: 100px;
     }
   }
 `
+
+const NewSection = styled.section`
+  h1{
+    margin-bottom: 30px;
+  }
+`
+
+
 
 
 export default function Main() {
@@ -296,7 +305,7 @@ export default function Main() {
 
       <BestSection>
         <Container>
-        <h1>BEST</h1>
+        <SectionTitle>BEST</SectionTitle>
         <BestSlides>
 
           <Swiper
@@ -350,7 +359,7 @@ export default function Main() {
       </BestSection>
 
       <EventSection>
-        <h1>EVENT</h1>
+        <SectionTitle>EVENT</SectionTitle>
         <ul>
           {
             event.map((item, idx)=>{
@@ -370,6 +379,10 @@ export default function Main() {
          
         </ul>
       </EventSection>
+
+      <NewSection>
+        <SectionTitle>Dr.G의 신상품을 공개합니다.</SectionTitle>
+      </NewSection>
     </>
   )
 }
