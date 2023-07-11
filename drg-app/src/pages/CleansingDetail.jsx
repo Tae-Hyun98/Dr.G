@@ -12,7 +12,7 @@ export default function CleansingDetail(props) {
 
   return (
     <>
-      <div className="wrap">
+      <div className="wrapping">
 
         <div className="detail_wrap">
 
@@ -24,14 +24,13 @@ export default function CleansingDetail(props) {
 
           <div className="detail_right">
 
-            <div className="detail_cate">{cleansings[id].category}</div>
-            <div className="detail_tit">{cleansings[id].title}</div>
+            <div className="detail_tit">{cleansings[id].title}<span className="detail_cate">{cleansings[id].category}</span> </div>
             <div className="detail_tag_wrap">
               <span>{cleansings[id].tag1}</span>
               <span>{cleansings[id].tag2}</span>
               <span>{cleansings[id].tag3}</span>
             </div>
-            <div className="price_wrap"> 
+            <div className="price_wrapper"> 
 
               <div>
                   {
