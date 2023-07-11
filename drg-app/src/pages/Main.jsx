@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import best from './bestData';
+import event from './eventData';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -49,7 +50,7 @@ const BestSection=styled.section`
   padding-bottom: 90px;
   overflow: hidden;
   h1{
-    font-size: 30px;
+    font-size: 34px;
     text-align: center;
     padding-bottom: 10px;
     margin-bottom: 30px;
@@ -63,14 +64,9 @@ const BestSlides=styled.div`
   a{
     color:#000;
   }
-  .inner{
-      width: 100%;
-      margin: 0 auto;
-    }
+ 
   .bestSwiper{
-    width: 1300px;
     padding-bottom: 20px;
-    padding: 0 20px;
     .swiper-slide{
       width: 270px;
       margin-right: 20px;
@@ -126,7 +122,9 @@ const BestImg=styled.div`
 `
 
 const Container=styled.div`
+  width: 1280px;
   margin: 0 auto;
+  overflow: hidden;
 `
 
 const LabelTag=styled.div`
@@ -190,6 +188,62 @@ const Price=styled.div`
   }
 `
 
+const EventSection = styled.section`
+padding-bottom: 100px;
+  h1{
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 30px;
+  }
+
+  ul{
+    width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    li{
+      position: relative;
+      width: 33.3333%;
+      margin-right: 20px;
+      img{
+        width:100%;
+      }
+
+      &:last-child{
+        margin-right: 0;
+      }
+
+      &:hover{
+        .hover_box{
+          opacity: 0.9;
+          transform: translateX(0);
+        }
+      }
+    }
+    .hover_box{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 350px;
+      transform: translateX(-30%);
+      transition: all .5s ease;
+      opacity: 0;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 5px 10px 10px #ddd;
+      p{
+        &.event_tit{
+          font-weight: 700;
+          font-size: 24px;
+          margin-bottom:15px;
+
+        }
+      }
+    }
+  }
+`
+
 
 export default function Main() {
   const pagination={
@@ -199,7 +253,6 @@ export default function Main() {
     };
 
     const [bests] = useState(best);
-
 
   return (
     <>
@@ -245,7 +298,6 @@ export default function Main() {
         <Container>
         <h1>BEST</h1>
         <BestSlides>
-        <div className='inner'>
 
           <Swiper
           modules={[Autoplay, Navigation, Scrollbar]}
@@ -292,11 +344,32 @@ export default function Main() {
               })
             }
           </Swiper>
-          </div>
 
         </BestSlides>
         </Container>
       </BestSection>
+
+      <EventSection>
+        <h1>EVENT</h1>
+        <ul>
+          {
+            event.map((item, idx)=>{
+              return(
+                <li key={idx} className='event_box'>
+                  <a href="#!">
+                    <img src={item.image} alt={item.id} />
+                  </a>
+                  <div className="hover_box">
+                    <p className='event_tit'>{item.title}</p>
+                    <p className='event_date'>{item.date}</p>
+                  </div>
+                </li>
+              )
+            })
+          }
+         
+        </ul>
+      </EventSection>
     </>
   )
 }
