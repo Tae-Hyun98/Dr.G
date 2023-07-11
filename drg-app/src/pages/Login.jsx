@@ -6,13 +6,13 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 
 const Tit=styled.h1`
-padding: 50px 0 30px 0;
+padding: 40px 0 30px 0;
 text-align: center;
 `
 
 const LoginContainer=styled.div`
   width: 500px;
-  margin: 0 auto;
+  margin: 50px auto 0;
   padding: 0 20px;
   background-color: #fff;
 `
@@ -100,7 +100,13 @@ const LoginBtn = styled.div`
 
 const Sns = styled.ul`
   display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  padding: 0 10px;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
   li{
+    padding: 20px;
     button{
       background-color: #fff;
       border: none;
@@ -109,6 +115,43 @@ const Sns = styled.ul`
       img{
         width: 45px;
         margin: 0 auto;
+      }
+      p{
+        margin-top: 10px;
+        font-size: 15px;
+        letter-spacing:-1px;
+      }
+    }
+  }
+`
+
+const SignUp = styled.div`
+  overflow: hidden;
+  margin-top: 30px;
+  button{
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all .3s;
+    &:hover{
+      background-color: #2fcab0;
+      color: #fff;
+    }
+  }
+  span{
+    font-size: 16px;
+    &:first-child{
+      float: left;
+    }
+    &:last-child{
+      float: right;
+      &::after{
+        content: '>';
+        display: inline-block;
+        padding-left: 5px;
       }
     }
   }
@@ -179,6 +222,13 @@ export default function Login() {
                   </button>
                 </li>
               </Sns>
+
+              <SignUp>
+                <button type='button' className='join'>
+                  <span>아직 회원이 아니세요?</span>
+                  <span><b>회원가입</b></span>
+                </button>
+              </SignUp>
         </LoginContainer>
     </>
   )

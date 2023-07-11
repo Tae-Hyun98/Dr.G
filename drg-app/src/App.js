@@ -14,7 +14,7 @@ import Login from './pages/Login';
 
 function App() {
   return (
-    <div className="wrap">
+    <div className="app">
       <Header/>
 
       <Routes>
