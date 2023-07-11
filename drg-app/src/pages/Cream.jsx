@@ -56,18 +56,18 @@ export default function Cream() {
 
                 <div>
                     {
-                      cleans.sale>0&&<span className="item_sale">{cream.sale}%</span>
+                      cream.sale>0&&<span className="item_sale">{cream.sale}%</span>
                     }
                 </div>
                 <div >
 
                     {
-                      cleans.sale>0 && <span className="item_price line">{(cream.price).toLocaleString('ko-KR')}원</span> 
+                      cream.sale>0 && <span className="item_price line">{(cream.price).toLocaleString('ko-KR')}원</span> 
                     }
                 </div> 
                 <div>
                     {
-                      cleans.sale>0 ? <div className="item_last_price">{(cream.price - ((cream.price) * (cream.sale / 100))).toLocaleString('ko-KR')}원</div> : <div className="item_last_price">{(cream.price).toLocaleString('ko-KR')}원</div>
+                      cream.sale>0 ? <div className="item_last_price">{(cream.price - ((cream.price) * (cream.sale / 100))).toLocaleString('ko-KR')}원</div> : <div className="item_last_price">{(cream.price).toLocaleString('ko-KR')}원</div>
                     }
                 </div>
 
