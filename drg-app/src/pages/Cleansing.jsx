@@ -14,7 +14,7 @@ const Tagbox = styled.div`
   text-align: center;
   margin-right: 10px;
   margin-top: 5px;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 22px;
   border-radius: 10px;
 `
@@ -65,12 +65,12 @@ export default function Cleansing() {
                 <div >
 
                     {
-                      cleans.sale>0 && <span className="item_price line">{(cleans.price).toLocaleString('ko-KR')}원</span> 
+                      cleans.sale>0 && <span className="item_price line">{(cleans.price).toLocaleString('ko-KR')}￦</span> 
                     }
                 </div> 
                 <div>
                     {
-                      cleans.sale>0 ? <span className="item_last_price">{(cleans.price - ((cleans.price) * (cleans.sale / 100))).toLocaleString('ko-KR')}원</span> : <span className="item_last_price">{(cleans.price).toLocaleString('ko-KR')}원</span>
+                      cleans.sale>0 ? <span className="item_last_price">{(cleans.price - ((cleans.price) * (cleans.sale / 100))).toLocaleString('ko-KR')}￦</span> : <span className="item_last_price">{(cleans.price).toLocaleString('ko-KR')}￦</span>
                     }
                 </div>
 

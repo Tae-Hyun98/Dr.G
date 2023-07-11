@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 .wrap{
-    padding:  0 100px;
+    padding:  0 50px;
 }
 .menu_tit{
     margin: 50px 0 ;
@@ -33,18 +33,15 @@
 }
 .item_title{
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 10px;
     min-height: 55px;
 }
-/* .price_wrap{
-    display: flex;
-    justify-content: space-around;
-} */
+
 .price_wrap {
     text-align: center;
     font-size: 18px;
-    min-height: 55px;
+    min-height: 40px;
     display: flex;
 }
 
