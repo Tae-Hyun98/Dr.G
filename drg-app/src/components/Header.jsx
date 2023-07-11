@@ -91,7 +91,7 @@ export default function Header() {
 
         <UtilBox>
           <UtilIcon>
-            <Link><img src={process.env.PUBLIC_URL + '/assets/main_img/util_mypage.svg'} alt='마이페이지'/></Link>
+            <Link to='/login'><img src={process.env.PUBLIC_URL + '/assets/main_img/util_mypage.svg'} alt='마이페이지'/></Link>
           </UtilIcon>
 
           <UtilIcon>
