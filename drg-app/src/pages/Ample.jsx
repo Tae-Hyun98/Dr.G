@@ -12,7 +12,7 @@ const Tagbox = styled.div`
   text-align: center;
   margin-right: 10px;
   margin-top: 5px;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 22px;
   border-radius: 10px;
 `
@@ -28,7 +28,7 @@ export default function Ample() {
     <div className="wrap">
 
     <div className="menu_tit">
-      <h2>클렌징</h2>
+      <h2>에센스/앰플</h2>
     </div>
         
     <div className="item_wrap"> 
@@ -61,12 +61,12 @@ export default function Ample() {
                 <div >
 
                     {
-                      ample.sale>0 && <span className="item_price line">{(ample.price).toLocaleString('ko-KR')}원</span> 
+                      ample.sale>0 && <span className="item_price line">{(ample.price).toLocaleString('ko-KR')}￦</span> 
                     }
                 </div> 
                 <div>
                     {
-                      ample.sale>0 ? <span className="item_last_price">{(ample.price - ((ample.price) * (ample.sale / 100))).toLocaleString('ko-KR')}원</span> : <span className="item_last_price">{(ample.price).toLocaleString('ko-KR')}원</span>
+                      ample.sale>0 ? <span className="item_last_price">{(ample.price - ((ample.price) * (ample.sale / 100))).toLocaleString('ko-KR')}￦</span> : <span className="item_last_price">{(ample.price).toLocaleString('ko-KR')}￦</span>
                     }
                 </div>
 
