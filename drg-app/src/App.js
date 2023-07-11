@@ -6,7 +6,7 @@ import Cleansing from './pages/Cleansing';
 import Scrub from './pages/Scrub';
 import Toner from './pages/Toner';
 import Ample from './pages/Ample';
-// import Cream from './pages/Cream';
+import Cream from './pages/Cream';
 
 import Header from './components/Header';
 import Login from './pages/Login';
@@ -25,7 +25,7 @@ function App() {
         <Route path='/scrub' element={<Scrub/>}/>
         <Route path='/toner' element={<Toner/>}/>
         <Route path='/ample' element={<Ample/>}/>
-        {/* <Route path='/cream' element={<Cream/>}/> */}
+        <Route path='/cream' element={<Cream/>}/>
 
         <Route path='/login' element={<Login/>}/>
       </Routes>
