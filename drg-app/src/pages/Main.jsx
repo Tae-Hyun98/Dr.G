@@ -51,7 +51,9 @@ const BestSection=styled.section`
   h1{
     font-size: 30px;
     text-align: center;
+    padding-bottom: 10px;
     margin-bottom: 30px;
+    border-bottom: 1px solid #ccc;
   }
 `
 
