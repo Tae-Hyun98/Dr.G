@@ -58,10 +58,13 @@ const BestSection=styled.section`
 `
 
 const BestSlides=styled.div`
+  position: relative;
+  overflow: hidden;
   a{
     color:#000;
   }
   .bestSwiper{
+    width: 100%;
     padding-bottom: 20px;
     .swiper-slide{
       width: 270px;
@@ -72,12 +75,14 @@ const BestSlides=styled.div`
     }
   }
   .swiper-scrollbar{
-    color: blue;
     bottom: 0;
+    height: 5px;
     .swiper-scrollbar-drag{
-      background-color: yellow;
+      background-color: #2fcab0;
     }
   }
+  .swiper-button-prev{left: 0px;z-index:5}
+  .swiper-button-next{right: 0px;z-index:5}
 `
 
 const BestImg=styled.div`
@@ -206,7 +211,7 @@ export default function Main() {
         }}
         className='visualSwiper'
         >
-
+        
           <SwiperSlide>
             <VisualImg src={process.env.PUBLIC_URL + '/assets/main_img/main_banner01.jpg'} alt="banner" />
           </SwiperSlide>
@@ -249,6 +254,7 @@ export default function Main() {
           slidesPerView={'auto'}
           className='bestSwiper'
           >
+
             {
               bests.map((best, index) => {
                 return (
@@ -279,7 +285,6 @@ export default function Main() {
               )
               })
             }
-          
 
           </Swiper>
         </BestSlides>
