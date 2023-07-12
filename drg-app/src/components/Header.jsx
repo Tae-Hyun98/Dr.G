@@ -96,7 +96,7 @@ export default function Header() {
           </UtilIcon>
 
           <UtilIcon>
-            <Link><img src={process.env.PUBLIC_URL + '/assets/main_img/util_cart.svg'} alt='장바구니'/></Link>
+            <Link to='/cart'><img src={process.env.PUBLIC_URL + '/assets/main_img/util_cart.svg'} alt='장바구니'/></Link>
           </UtilIcon>
           
           <UtilIcon>

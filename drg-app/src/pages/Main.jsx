@@ -13,6 +13,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { addItem } from './store';
+import { useDispatch } from 'react-redux';
 
 
 const  SectionTitle = styled.h1`
@@ -88,8 +90,8 @@ const BestSlides=styled.div`
       background-color: #2fcab0;
     }
   }
-  .swiper-button-prev{left: -10px;z-index:5}
-  .swiper-button-next{right: 0px;z-index:5}
+/*   .swiper-button-prev{left: -10px;z-index:5}
+  .swiper-button-next{right: 0px;z-index:5} */
 `
 
 const BestImg=styled.div`
@@ -491,13 +493,17 @@ const TopBtn = styled.a`
 `
 
 export default function Main() {
+
+  const dispatch = useDispatch();
+  const [bests] = useState(best);
+
   const pagination={
     clickable:true,
     renderBullet:function(index,className){
       return '<span class="' + className + '">' + (index + 1) + '</span>';},
     };
 
-    const [bests] = useState(best);
+    
 
   return (
     <>
@@ -568,7 +574,9 @@ export default function Main() {
                     <BestImg>
                       <img src={best.image} alt="best_img" />
                       <div className='hover_cart'>
-                        <p>장바구니</p>
+                        <p onClick={()=> dispatch(addItem({
+                          id:best.id, image:best.image, title:best.title, price:best.price, sale:best.sale, count:1
+                        }))}>장바구니</p>
                       </div>
                     </BestImg>
                     <LabelTag><p>{best.best}</p></LabelTag>

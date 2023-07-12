@@ -7,12 +7,13 @@ import Scrub from './pages/Scrub';
 import Toner from './pages/Toner';
 import Ample from './pages/Ample';
 import Cream from './pages/Cream';
+import Cart from './pages/Cart';
 
 import Header from './components/Header';
 import Login from './pages/Login';
 
-import cleansing from './dataset/cleansingData'
-import cream from './dataset/creamData'
+import cleansing from './dataset/cleansingData';
+import cream from './dataset/creamData';
 import scrub from './dataset/scrubData';
 import toner from './dataset/tonerData';
 import ample from './dataset/ampleData';
@@ -54,7 +55,7 @@ function App() {
         <Route path='toner/tonerdetail/:id' element={<TonerDetail toners={toners}/>}/>
         <Route path='ample/ampledetail/:id' element={<AmpleDetail amples={amples}/>}/>
 
-
+        <Route path='/cart' element={<Cart/>}/>
       </Routes>
     </div>
 

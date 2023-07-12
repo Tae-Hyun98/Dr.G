@@ -3,7 +3,8 @@ import './style.css'
 // import {useDispatch, useSelector} from 'react-redux'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
-
+import { addItem } from './store';
+import { useDispatch } from 'react-redux';
 
 const Btn = styled.button`
   width: 150px;
@@ -37,6 +38,7 @@ export default function CleansingDetail(props) {
 
   const {cleansings} = props
   const {id} = useParams()
+  const dispatch = useDispatch()
 
   return (
     <>
@@ -99,7 +101,9 @@ export default function CleansingDetail(props) {
             </div>
 
             <div className="btn_wrap">
-              <CartBtn>장바구니</CartBtn>
+              <CartBtn onClick={()=> dispatch(addItem({
+                id:cleansings[id].id, image:cleansings[id].image, title:cleansings[id].title, sale: cleansings[id].sale, count:1, price: cleansings[id].price
+              }))}>장바구니</CartBtn>
               <CartBtn>구매하기</CartBtn>
               
             </div>
