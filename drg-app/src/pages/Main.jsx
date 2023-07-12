@@ -198,14 +198,14 @@ padding-bottom: 100px;
   }
 
   ul{
-    width: 1280px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
 
     li{
       position: relative;
       width: 33.3333%;
+      border-radius: 5px;
+      overflow: hidden;
       margin-right: 20px;
       img{
         width:100%;
@@ -256,11 +256,11 @@ const NewSection = styled.section`
 `
 
 const NewInner= styled.div`
-  width: 1280px;
   padding-bottom: 50px;
   margin: 0 auto;
   display: flex;
   .new_box{
+    cursor: pointer;
     border-radius: 5px;
     overflow: hidden;
     &:hover{
@@ -302,7 +302,6 @@ const NewInner= styled.div`
         top: 10px;
         p{
           &.new_tit{
-            color: #fff;
             font-weight: 700;
             letter-spacing: -0.5px;
             font-size: 18px;
@@ -317,13 +316,14 @@ const NewInner= styled.div`
     position: absolute;
     p{
       position: relative;
-      color: #000;
       text-align: center;
+
       &.new_tit{
         font-weight: 500;
+        color: #fff;
       }
+
       &.hash{
-        text-align: center;
         z-index: 1;
 
        &::before{
@@ -345,6 +345,200 @@ const NewInner= styled.div`
        
       }
     }
+`
+
+const CateGorySection = styled.section`
+  padding: 70px 0 150px;
+  .category_tit{
+    text-align: center;
+    margin-bottom: 35px;
+    h1{
+      font-size: 36px;
+      font-weight: 400;
+    }
+    p{
+      font-size: 18px;
+      margin-top: 5px;
+      color: #212121;
+    }
+  }
+
+  ul{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    &:last-child{
+      margin-bottom: 0;
+    }
+    li{
+      width: 150px;
+      margin-right: 40px;
+      overflow: hidden;
+      &:last-child{
+        margin-right: 0;
+      }
+
+      a{
+        display: block;
+        text-align: center;
+        &:hover{
+          .icon_box{
+            background-color: #2fcab0;
+            img{
+              scale: 1.2;
+            }
+          }
+        }
+        .icon_box{
+          background-color: #eee;
+          border-radius: 50%;
+          margin-bottom: 10px;
+         
+          img{
+            width: 100%;
+            transition: all .3s;
+          }
+        }
+        
+      }
+    }
+  }
+`
+
+const SuggestSection=styled.section`
+  margin-bottom: 100px;
+  .suggest_tit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    img{
+      margin-right:15px;
+    }
+    h1{
+      font-size: 32px;
+      letter-spacing: -1px;
+    }
+  }
+
+  .suggest_box{
+    ul{
+      display: flex;
+      li{
+        position: relative;
+        width: 25%;
+        padding: 40px 40px 20px;
+        background-color: aqua;
+        margin-right: 30px;
+        border-radius: 20px;
+        &:nth-child(1){
+          background-color: #3bbea8;
+        }
+        &:nth-child(2){
+          background-color: #fadb50;
+        }
+        &:nth-child(3){
+          background-color: #838ef6;
+        }
+        &:nth-child(4){
+          background-color: #54b9f1;
+          margin-right: 0;
+        }
+        p{
+          font-size: 20px;
+          font-weight: 700;
+          margin-bottom: 40px;
+          img{
+            display: inline;
+            width: 110px;
+          }
+          &:last-child{
+            width: 100%;
+            text-align: right;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+`
+
+const Footer = styled.footer`
+  background-color: #222;
+  .footer_inner{
+    padding: 60px 0;
+  }
+  .footer_nav{
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+
+    ul{
+      margin-left: 5px;
+      li{
+        display: inline-block;
+        a{
+          color: #ccc;
+          padding: 0 25px;
+          font-weight: 500;
+          transition: .3s;
+          &:hover{
+            color: #fff;
+          }
+        }
+
+      }
+    }
+  }
+
+  .footer_desc{
+    margin-bottom: 20px;
+    p{
+      color: #fff;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    ul{
+      display: flex;
+      flex-wrap: wrap;
+      li{
+        font-size: 12px;
+        padding: 0 15px;
+        color: #a7a9ac;
+        &.address{
+          width:100%;
+          margin-bottom: 5px;
+          padding-left: 0;
+        }
+        &:nth-child(2){
+          padding-left: 0;
+        }
+        &:last-child{
+            padding-left: 0;
+          }
+
+        a{
+          color: #fff;
+          border: 1px solid #ccc;
+          padding: 5px 8px;
+          &::after{
+            content: '>';
+            display: inline-block;
+            padding-left: 5px;
+          }
+         
+        }
+      }
+    }
+  }
+
+  .copyright{
+    color:#a7a9ac;
+    font-size: 12px;
+  }
+
+  
+    
 `
 
 
@@ -408,7 +602,7 @@ export default function Main() {
             modules={[Autoplay, Navigation, Scrollbar]}
             loop={true}
             speed={1000}
-            navigation={true}
+            // navigation={true}
             freeMode={true}
             scrollbar={{draggable: true}}
             /* autoplay={{
@@ -455,6 +649,7 @@ export default function Main() {
       </BestSection>
 
       <EventSection>
+        <Container>
         <SectionTitle>EVENT</SectionTitle>
         <ul>
           {
@@ -474,65 +669,311 @@ export default function Main() {
           }
          
         </ul>
+        </Container>
       </EventSection>
 
       <NewSection>
+        <Container>
         <SectionTitle>Dr.G의 신상품을 공개합니다.</SectionTitle>
-
-        <NewInner>
-          <div className='new_left'>
-            <div className="new_box">
-              <img src={process.env.PUBLIC_URL + '/assets/main_img/new04.jpg'} alt="new_product" />
-              <div className="new_text">
-                <p className='new_tit'>레드 블레미쉬 시카 클렌징 폼</p>
-                <p className='hash'>#슈퍼시카 #딥클렌징</p>
-              </div>
-            </div>
-          </div>
-
-          <div className='new_right'>
-            <div className="new_box">
-              <img src={process.env.PUBLIC_URL + '/assets/main_img/new06.jpg'} alt="new_product" />
-              <div className="new_text">
-                <p className='new_tit'>프레스티지 마유 크림</p>
-                <p className='hash'>
-                  <span>#EGFX트러플</span>
-                </p>
+          <NewInner>
+            <div className='new_left'>
+              <div className="new_box">
+                <img src={process.env.PUBLIC_URL + '/assets/main_img/new04.jpg'} alt="new_product" />
+                <div className="new_text">
+                  <p className='new_tit'>레드 블레미쉬 시카 클렌징 폼</p>
+                  <p className='hash'>#슈퍼시카 #딥클렌징</p>
+                </div>
               </div>
             </div>
 
-            <div className="new_box">
-              <img src={process.env.PUBLIC_URL + '/assets/main_img/new03.jpg'} alt="new_product" />
-              <div className="new_text">
-                <p className='new_tit'>에이클리어 스팟 큐어 패치</p>
-                <p className='hash'>
-                  <span>#상처보호</span>
-                </p>
+            <div className='new_right'>
+              <div className="new_box">
+                <img src={process.env.PUBLIC_URL + '/assets/main_img/new06.jpg'} alt="new_product" />
+                <div className="new_text">
+                  <p className='new_tit'>프레스티지 마유 크림</p>
+                  <p className='hash'>
+                    <span>#EGFX트러플</span>
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="new_box">
-              <img src={process.env.PUBLIC_URL + '/assets/main_img/new05.jpg'} alt="new_product" />
-              <div className="new_text">
-                <p className='new_tit'>나이스 버디 업 선 스틱</p>
-                <p className='hash'>
-                 <span>#착붙 선스틱</span>
-                </p>
+              <div className="new_box">
+                <img src={process.env.PUBLIC_URL + '/assets/main_img/new03.jpg'} alt="new_product" />
+                <div className="new_text">
+                  <p className='new_tit'>에이클리어 스팟 큐어 패치</p>
+                  <p className='hash'>
+                    <span>#상처보호</span>
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="new_box">
-              <img src={process.env.PUBLIC_URL + '/assets/main_img/new08.jpg'} alt="new_product" />
-              <div className="new_text">
-                <p className='new_tit'>레드블레미쉬 수딩 크림</p>
-                <p className='hash'>
-                   #2000만 돌파
-                </p>
+              <div className="new_box">
+                <img src={process.env.PUBLIC_URL + '/assets/main_img/new05.jpg'} alt="new_product" />
+                <div className="new_text">
+                  <p className='new_tit'>나이스 버디 업 선 스틱</p>
+                  <p className='hash'>
+                  <span>#착붙 선스틱</span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="new_box">
+                <img src={process.env.PUBLIC_URL + '/assets/main_img/new08.jpg'} alt="new_product" />
+                <div className="new_text">
+                  <p className='new_tit'>레드블레미쉬 수딩 크림</p>
+                  <p className='hash'>
+                    #2000만 돌파
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </NewInner>
+          </NewInner>
+        </Container>
       </NewSection>
+
+
+      <CateGorySection>
+        <Container>
+          <div className="category">
+            <div className="category_tit">
+              <h1>Dr.G PRODUCT</h1>
+              <p>Dr.G의 다양한 제품을 만나보세요</p>
+            </div>
+
+            <ul>
+              <li>
+                <Link to='/cleansing'>
+                  <div className="icon_box">
+                    <img src={process.env.PUBLIC_URL + '/assets/main_img/category_icon.png'} alt="category" />
+                  </div>
+
+                  <div className="cate_name">
+                    <p>클렌징</p>
+                  </div>
+                </Link>
+              </li>
+
+              <li>
+              <Link to='/scrub'>
+                  <div className="icon_box">
+                    <img src={process.env.PUBLIC_URL + '/assets/main_img/category_icon1.png'} alt="category" />
+                  </div>
+
+                  <div className="cate_name">
+                    <p>필링/스크럽</p>
+                  </div>
+                </Link>
+              </li>
+
+              <li>
+                <Link to='/toner'>
+                  <div className="icon_box">
+                    <img src={process.env.PUBLIC_URL + '/assets/main_img/category_icon2.png'} alt="category" />
+                  </div>
+
+                  <div className="cate_name">
+                    <p>토너/미스트</p>
+                  </div>
+                </Link>
+              </li>
+
+              <li>
+                <Link to='/ample'>
+                  <div className="icon_box">
+                    <img src={process.env.PUBLIC_URL + '/assets/main_img/category_icon3.png'} alt="category" />
+                  </div>
+
+                  <div className="cate_name">
+                    <p>에센스/앰플</p>
+                  </div>
+                </Link>
+              </li>
+
+              <li>
+                <Link to='/cream'>
+                  <div className="icon_box">
+                    <img src={process.env.PUBLIC_URL + '/assets/main_img/category_icon4.png'} alt="category" />
+                  </div>
+
+                  <div className="cate_name">
+                    <p>크림/밤</p>
+                  </div>
+                </Link>
+              </li>
+            </ul>
+
+            <ul>
+              <li>
+                <Link to='/cleansing'>
+                  <div className="icon_box">
+                    <img src={process.env.PUBLIC_URL + '/assets/main_img/category_icon5.png'} alt="category" />
+                  </div>
+
+                  <div className="cate_name">
+                    <p>에멀전</p>
+                  </div>
+                </Link>
+              </li>
+
+              <li>
+                <Link to='/scrub'>
+                  <div className="icon_box">
+                    <img src={process.env.PUBLIC_URL + '/assets/main_img/category_icon6.png'} alt="category" />
+                  </div>
+
+                  <div className="cate_name">
+                    <p>선케어</p>
+                  </div>
+                </Link>
+              </li>
+
+              <li>
+                <Link to='toner'>
+                  <div className="icon_box">
+                    <img src={process.env.PUBLIC_URL + '/assets/main_img/category_icon7.png'} alt="category" />
+                  </div>
+
+                  <div className="cate_name">
+                    <p>마스크/팩</p>
+                  </div>
+                </Link>
+              </li>
+
+              <li>
+                <Link to='/ample'>
+                  <div className="icon_box">
+                    <img src={process.env.PUBLIC_URL + '/assets/main_img/category_icon8.png'} alt="category" />
+                  </div>
+
+                  <div className="cate_name">
+                    <p>바디케어</p>
+                  </div>
+                </Link>
+              </li>
+
+              <li>
+                <Link to='cream'>
+                  <div className="icon_box">
+                    <img src={process.env.PUBLIC_URL + '/assets/main_img/category_icon9.png'} alt="category" />
+                  </div>
+
+                  <div className="cate_name">
+                    <p>화장소품</p>
+                  </div>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </Container>
+      </CateGorySection>
+
+      <SuggestSection>
+        <Container>
+          <div className="suggest_tit">
+              <img src={process.env.PUBLIC_URL + '/assets/main_img/bulb-ico.svg'} alt="bulb" />
+              <h1>닥터지에게 제안해주세요</h1>
+          </div>
+
+          <div className="suggest_box">
+            <ul>
+              <li>
+                <div className="sug_desc">
+                  <p className='sug_tit'>
+                    이 제품을
+                    <br/>
+                    만들어주세요!
+                  </p>
+
+                  <p>
+                    <img src={process.env.PUBLIC_URL + '/assets/main_img/suggest_icon.svg'} alt="suggest" />
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div className="sug_desc">
+                  <p className='sug_tit'>
+                    이런 서비스는
+                    <br/>
+                    없나요?
+                  </p>
+
+                  <p>
+                    <img src={process.env.PUBLIC_URL + '/assets/main_img/suggest_icon1.svg'} alt="suggest" />
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div className="sug_desc">
+                  <p className='sug_tit'>
+                    이런 패키지는
+                    <br/>
+                    어떨까요?
+                  </p>
+
+                  <p>
+                    <img src={process.env.PUBLIC_URL + '/assets/main_img/suggest_icon2.svg'} alt="suggest" />
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div className="sug_desc">
+                  <p className='sug_tit'>
+                    이런건 좀
+                    <br/>
+                    바꿔주세요.
+                  </p>
+
+                  <p>
+                    <img src={process.env.PUBLIC_URL + '/assets/main_img/suggest_icon3.svg'} alt="suggest" />
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </Container>
+      </SuggestSection>
+
+      <Footer>
+        <Container>
+          <div className="footer_inner">
+            <div className="footer_nav">
+              <Link to='/'>
+                <img src={process.env.PUBLIC_URL + '/assets/main_img/brand_logo_white.svg'} alt="logo" />
+              </Link>
+
+              <ul>
+                <li><Link>Dr.G소개</Link></li>
+                <li><Link>채용정보</Link></li>
+                <li><Link>이용약관</Link></li>
+                <li><Link>개인정보처리방침</Link></li>
+                <li><Link>고객센터</Link></li>
+                <li><Link>회원혜택</Link></li>
+                <li><Link>제휴문의</Link></li>
+              </ul>
+            </div>
+
+            <div className="footer_desc">
+              <p>(주)고운세상코스메틱</p>
+
+              <ul>
+                <li className='address'>경기도 성남시 분당구 분당로 55 퍼스트타워 11층</li>
+                <li>대표이사 이주호</li>
+                <li>사업자등록번호 209-81-23948</li>
+                <li>통신판매업신고번호 2012-경기성남-0552</li>
+                <li><a href="#!">사업자정보확인</a></li>
+                <li><a href="#!">지속가능경영보고서</a></li>
+              </ul>
+            </div>
+
+            <div className="copyright">
+              Copyright © GOWOONSESANG COSMETICS Co.,Ltd. All Rights Reserved.
+            </div>
+          </div>
+        </Container>
+      </Footer>
     </>
   )
 }
