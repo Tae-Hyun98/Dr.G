@@ -248,13 +248,13 @@ export default function Cart() {
                     </div>
 
                     <div className="pr_price">
-                      <p>{product.price}</p>
+                      <p>{(product.price).toLocaleString('ko-KR')}원</p>
                     </div>
 
                     <div className="payment">
-                      <p className='origin'>{product.price}</p>
+                      <p className='origin'>{(product.price).toLocaleString('ko-KR')}원</p>
                       <p className='sale_price'>
-                        {(product.price - ((product.price) * (product.sale / 100))).toLocaleString('ko-KR')}
+                        {(product.price - ((product.price) * (product.sale / 100))).toLocaleString('ko-KR')}원
                       </p>
                     </div>
                   </li>
