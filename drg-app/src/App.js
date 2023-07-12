@@ -12,13 +12,25 @@ import Header from './components/Header';
 import Login from './pages/Login';
 
 import cleansing from './pages/cleansingData'
+import cream from './pages/creamData'
+import scrub from './pages/scrubData';
+import toner from './pages/tonerData';
+import ample from './pages/ampleData';
+
 import { useState } from 'react';
 import CleansingDetail from './pages/CleansingDetail';
+import CreamDetail from './pages/CreamDetail';
+import ScrubDetail from './pages/ScrubDetail';
+import TonerDetail from './pages/TonerDetail';
+import AmpleDetail from './pages/AmpleDetail';
 
 
 function App() {
   const [cleansings] = useState(cleansing)
-
+  const [creams] = useState(cream)
+  const [scrubs] = useState(scrub)
+  const [toners] = useState(toner)
+  const [amples] = useState(ample)
 
   return (
     <div className="app">
@@ -37,6 +49,10 @@ function App() {
         <Route path='/login' element={<Login/>}/>
 
         <Route path='cleansing/cleansingdetail/:id' element={<CleansingDetail cleansings={cleansings}/>}/>
+        <Route path='cream/creamdetail/:id' element={<CreamDetail creams={creams}/>}/>
+        <Route path='scrub/scrubdetail/:id' element={<ScrubDetail scrubs={scrubs}/>}/>
+        <Route path='toner/tonerdetail/:id' element={<TonerDetail toners={toners}/>}/>
+        <Route path='ample/ampledetail/:id' element={<AmpleDetail amples={amples}/>}/>
 
 
       </Routes>

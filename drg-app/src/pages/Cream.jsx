@@ -3,6 +3,7 @@ import { React,useState } from 'react'
 import './style.css' 
 import { styled } from 'styled-components'
 import cream from './creamData'
+import { Link } from 'react-router-dom'
 
 
 const Tagbox = styled.div`
@@ -28,7 +29,7 @@ export default function Cream() {
     <>
     <div className="wrap">
     <div className="menu_tit">
-      <h2>크림</h2>
+      <h2>크림/밤</h2>
     </div>
         
     <div className="item_wrap"> 
@@ -37,6 +38,7 @@ export default function Cream() {
          creams.map((cream,index) => {
             return(
           <div className="item_box" key={index}>
+            <Link to={`/cream/creamdetail/${index}`}>
             <div className="item_img">
              <img src={cream.image} alt="img" />
              <div className="hover_wish">
@@ -61,16 +63,17 @@ export default function Cream() {
                 <div >
 
                     {
-                      cream.sale>0 && <span className="item_price line">{(cream.price).toLocaleString('ko-KR')}￦</span> 
+                      cream.sale>0 && <span className="item_price line">￦{(cream.price).toLocaleString('ko-KR')}</span> 
                     }
                 </div> 
                 <div>
                     {
-                      cream.sale>0 ? <span className="item_last_price">{(cream.price - ((cream.price) * (cream.sale / 100))).toLocaleString('ko-KR')}￦</span> : <span className="item_last_price">{(cream.price).toLocaleString('ko-KR')}￦</span>
+                      cream.sale>0 ? <span className="item_last_price">￦{(cream.price - ((cream.price) * (cream.sale / 100))).toLocaleString('ko-KR')}</span> : <span className="item_last_price">￦{(cream.price).toLocaleString('ko-KR')}</span>
                     }
                 </div>
 
               </div>
+              </Link>
 
             <div className="item_wish"><span>장바구니</span></div>
 

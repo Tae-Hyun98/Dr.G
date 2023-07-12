@@ -1,8 +1,8 @@
 import  { React, useState } from 'react'
-// import{Routes, Route, Link, useNavigate, useParams} from 'react-router-dom'; 
 import './style.css' 
 import { styled } from 'styled-components'
 import ample from './ampleData'
+import { Link } from 'react-router-dom'
 
 const Tagbox = styled.div`
   width: 65px;
@@ -37,6 +37,7 @@ export default function Ample() {
          amples.map((ample,index) => {
             return(
           <div className="item_box" key={index}>
+            <Link to={`/ample/ampledetail/${index}`}>
             <div className="item_img">
              <img src={ample.image} alt="img" />
              <div className="hover_wish">
@@ -61,16 +62,17 @@ export default function Ample() {
                 <div >
 
                     {
-                      ample.sale>0 && <span className="item_price line">{(ample.price).toLocaleString('ko-KR')}￦</span> 
+                      ample.sale>0 && <span className="item_price line">￦{(ample.price).toLocaleString('ko-KR')}</span> 
                     }
                 </div> 
                 <div>
                     {
-                      ample.sale>0 ? <span className="item_last_price">{(ample.price - ((ample.price) * (ample.sale / 100))).toLocaleString('ko-KR')}￦</span> : <span className="item_last_price">{(ample.price).toLocaleString('ko-KR')}￦</span>
+                      ample.sale>0 ? <span className="item_last_price">￦{(ample.price - ((ample.price) * (ample.sale / 100))).toLocaleString('ko-KR')}</span> : <span className="item_last_price">￦{(ample.price).toLocaleString('ko-KR')}</span>
                     }
                 </div>
 
               </div>
+              </Link>
 
             <div className="item_wish"><span>장바구니</span></div>
 

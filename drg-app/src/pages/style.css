@@ -164,7 +164,7 @@ li{
 .detail_left img{
     width: 100%;
     border-radius: 20px;
-    transform: scale(1.15);
+    transform: scale(1.1);
     transition: .8s;
 }
 .detail_left:hover img {
