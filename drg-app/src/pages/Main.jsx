@@ -5,6 +5,7 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import best from '../dataset/bestData';
 import event from '../dataset/eventData';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 import Footer from '../components/Footer';
 
@@ -53,8 +54,7 @@ const VisualImg=styled.img`
 
 const BestSection=styled.section`
   width: 100%;
-  padding-top: 90px;
-  padding-bottom: 90px;
+  padding: 100px 0;
   overflow: hidden;
   h1{
     padding-bottom: 10px;
@@ -194,7 +194,7 @@ const Price=styled.div`
 `
 
 const EventSection = styled.section`
-padding-bottom: 100px;
+  padding: 100px 0 150px;
   h1{
     margin-bottom: 30px;
   }
@@ -430,7 +430,6 @@ const SuggestSection=styled.section`
         position: relative;
         width: 25%;
         padding: 40px 40px 20px;
-        background-color: aqua;
         margin-right: 30px;
         border-radius: 20px;
         &:nth-child(1){
@@ -465,6 +464,30 @@ const SuggestSection=styled.section`
   }
 `
 
+const TopBtn = styled.a`
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  right: 30px;
+  bottom: 40px;
+  background-color: #fff;
+  box-shadow: 10px 16px 36px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all.3s;
+  z-index: 9999;
+  svg{
+    width: 100%;
+  }
+  &:hover{
+    border: none;
+    background-color: #2fcab0;
+    color: #fff;
+  }
+`
 
 export default function Main() {
   const pagination={
@@ -861,6 +884,10 @@ export default function Main() {
       </SuggestSection>
 
       <Footer/>
+
+      <TopBtn>
+        <ArrowUpwardIcon/>
+      </TopBtn>
     </>
   )
 }

@@ -16,7 +16,7 @@ const FooterBox = styled.footer`
         display: inline-block;
         a{
           color: #ccc;
-          padding: 0 25px;
+          padding: 0 20px;
           font-weight: 500;
           transition: .3s;
           &:hover{
@@ -86,6 +86,71 @@ const FooterInner = styled.div`
 const FooterAside = styled.aside`
   position: absolute;
   right: 0;
+  top: 60px;
+  .sns{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
+    ul{
+      width: 100%;
+      li{
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        margin-right: 10px;
+        overflow: hidden;
+        &:last-child{
+          margin-right: 0;
+        }
+
+        a{
+          width: 100%;
+          height: 100%;
+          display: block;
+          background-repeat: no-repeat;
+          background-size: 40px 40px;
+
+          &.kakao{
+            background-image: url(/assets/main_img/sns_kakao.png);
+          }
+          &.youtube{
+            background-image: url(/assets/main_img/sns_youtube.png);
+          }
+          &.insta{
+            background-image: url(/assets/main_img/sns_insta.png);
+          }
+          &.facebook{
+            background-image: url(/assets/main_img/sns_facebook.png);
+          }
+        }
+      }
+    }
+  }
+
+  .cs{
+    p{
+      font-size: 12px;
+      margin-bottom: 10px;
+      color: #a7a9ac;
+
+      &:last-child{
+        margin-bottom: 0;
+      }
+
+      &.cs_call{
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 15px;
+        span{
+          font-size: 16px;
+          font-weight: 700;
+          padding-left: 15px;
+        }
+      }
+
+      
+    }
+  }
 `
 
 export default function Footer() {
@@ -127,7 +192,32 @@ export default function Footer() {
             </div>
 
             <FooterAside>
-              
+              <div className="sns">
+                <ul>
+                  <li>
+                    <Link href="#" className='kakao'></Link>
+                  </li>
+
+                  <li>
+                    <Link href="#" className='youtube'></Link>
+                  </li>
+
+                  <li>
+                    <Link href="#" className='insta'></Link>
+                  </li>
+
+                  <li>
+                    <Link href="#" className='facebook'></Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="cs">
+                <p className='cs_call'>고객센터 <span>1811-9415</span></p>
+                <p>평일 : 09:30 ~ 17:00</p>
+                <p>점심 : 12:30 ~ 13:30(매주 수요일 12:00~14:00)</p>
+                <p>토요일, 일요일, 공휴일 휴무 입니다.</p>
+              </div>
             </FooterAside>
         </FooterInner>
       </FooterBox>
