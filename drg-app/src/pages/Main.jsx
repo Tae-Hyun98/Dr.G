@@ -481,6 +481,7 @@ const TopBtn = styled.a`
   z-index: 9999;
   svg{
     width: 100%;
+    font-size: 32px;
   }
   &:hover{
     border: none;
