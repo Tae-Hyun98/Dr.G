@@ -1,7 +1,7 @@
 import  { React, useState } from 'react'
 import './style.css' 
 import { styled } from 'styled-components'
-import ample from './ampleData'
+import ample from '../dataset/ampleData'
 import { Link } from 'react-router-dom'
 
 const Tagbox = styled.div`

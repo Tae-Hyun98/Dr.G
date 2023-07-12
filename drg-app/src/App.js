@@ -11,11 +11,11 @@ import Cream from './pages/Cream';
 import Header from './components/Header';
 import Login from './pages/Login';
 
-import cleansing from './pages/cleansingData'
-import cream from './pages/creamData'
-import scrub from './pages/scrubData';
-import toner from './pages/tonerData';
-import ample from './pages/ampleData';
+import cleansing from './dataset/cleansingData'
+import cream from './dataset/creamData'
+import scrub from './dataset/scrubData';
+import toner from './dataset/tonerData';
+import ample from './dataset/ampleData';
 
 import { useState } from 'react';
 import CleansingDetail from './pages/CleansingDetail';

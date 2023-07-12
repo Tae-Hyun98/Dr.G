@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './style.css' 
 import { styled } from 'styled-components'
-import toner from './tonerData'
+import toner from '../dataset/tonerData'
 import { Link } from 'react-router-dom'
 
 const Tagbox = styled.div`

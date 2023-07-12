@@ -2,7 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 import{ Link } from 'react-router-dom'; 
 import './style.css' 
-import cleansing from './cleansingData'
+import cleansing from '../dataset/cleansingData'
 import { styled } from 'styled-components'
 
 

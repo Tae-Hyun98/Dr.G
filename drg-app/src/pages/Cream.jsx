@@ -2,7 +2,7 @@ import { React,useState } from 'react'
 // import{Routes, Route, Link, useNavigate, useParams} from 'react-router-dom'; 
 import './style.css' 
 import { styled } from 'styled-components'
-import cream from './creamData'
+import cream from '../dataset/creamData'
 import { Link } from 'react-router-dom'
 
 

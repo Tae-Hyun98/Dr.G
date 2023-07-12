@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import{ Link } from 'react-router-dom'; 
 import './style.css' 
 import { styled } from 'styled-components'
-import scrub from './scrubData'
+import scrub from '../dataset/scrubData'
 
 const Tagbox = styled.div`
   width: 65px;
