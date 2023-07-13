@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
+import { plusCount, miusCount } from './store';
 
 const CartWrap = styled.div`
   .cart_inner{
@@ -205,7 +206,7 @@ const CartWrap = styled.div`
 
 export default function Cart() {
 
-  const state = useSelector((state)=>state);
+  const state = useSelector((state)=>state.cart);
   const dispatch = useDispatch();
 
   return (
@@ -229,7 +230,7 @@ export default function Cart() {
         <div className="list_box">
           <ul className='list'>
             {
-              state.cart.map((product, i) => {
+              state.map((product, i) => {
                 return(
                   <li key={i}>
                     <div className="check">
@@ -242,9 +243,9 @@ export default function Cart() {
                     </div>
 
                     <div className="amount">
-                      <button type='button'>-</button>
+                      <button type='button' onClick={()=>dispatch(miusCount({id:product.id}))}>-</button>
                       <p>{product.count}</p>
-                      <button type='button'>+</button>
+                      <button type='button' onClick={()=>dispatch(plusCount({id:product.id}))}>+</button>
                     </div>
 
                     <div className="pr_price">
