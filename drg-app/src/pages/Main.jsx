@@ -115,7 +115,7 @@ const BestImg=styled.div`
     transition: all.3s;
     p{
       width: 100%;
-      padding: 5px 0;
+      padding: 10px 0;
       background-color: #2fcab0;
       text-align: center;
       color: #fff;

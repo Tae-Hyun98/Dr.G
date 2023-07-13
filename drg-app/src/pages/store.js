@@ -35,11 +35,15 @@ const cart = createSlice({
       if(state[index].count > 1){
         state[index].count--
       }
+    },
+
+    deleteAll(){
+      return [];
     }
   }
 })
 
-export const {addItem, plusCount, miusCount} = cart.actions
+export const {addItem, plusCount, miusCount, deleteAll} = cart.actions
 
 export default configureStore({
   reducer:{

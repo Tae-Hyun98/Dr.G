@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { plusCount, miusCount } from './store';
+import { plusCount, miusCount, deleteAll } from './store';
 
 const CartWrap = styled.div`
   .cart_inner{
@@ -208,13 +208,21 @@ export default function Cart() {
 
   const state = useSelector((state)=>state.cart);
   const dispatch = useDispatch();
+  
+  let total=0;
+  state.map((item)=>{
+    return(
+    total+=((item.price*item.count) - ((item.price*item.count) * (item.sale / 100)))
+    )
+
+  })
 
   return (
     <>
       <CartWrap>
 
         <div className="cart_inner">
-          <h1>장바구니</h1>
+          <h1>장바구니({state.length})</h1>
 
         <div className="cart_tit">
           <ul>
@@ -229,6 +237,7 @@ export default function Cart() {
         {/* 담기는 상품보여주는영역 */}
         <div className="list_box">
           <ul className='list'>
+            
             {
               state.map((product, i) => {
                 return(
@@ -249,37 +258,42 @@ export default function Cart() {
                     </div>
 
                     <div className="pr_price">
-                      <p>{(product.price).toLocaleString('ko-KR')}원</p>
+                      <p>{(product.price*product.count).toLocaleString('ko-KR')}원</p>
                     </div>
 
                     <div className="payment">
-                      <p className='origin'>{(product.price).toLocaleString('ko-KR')}원</p>
-                      <p className='sale_price'>
-                        {(product.price - ((product.price) * (product.sale / 100))).toLocaleString('ko-KR')}원
+                      <p className='origin'>{(product.price*product.count).toLocaleString('ko-KR')}원</p>
+                      <p className='sale_price' style={{display:product.sale>0 ? 'block' : 'none'}}>
+                        {((product.price*product.count) - ((product.price*product.count) * (product.sale / 100))).toLocaleString('ko-KR')}원
                       </p>
                     </div>
                   </li>
                 )
               })
+              
             }
           </ul>
         </div>
 
-        <DeleteBox>
+        <DeleteBox style={{display:state.length>0 ? 'block' : 'none'}}>
           <DeleteBtn type='button'>선택 삭제</DeleteBtn>
-          <DeleteBtn type='button'>전체 삭제</DeleteBtn>
+          <DeleteBtn type='button' onClick={()=>(
+            dispatch(deleteAll(), alert('전체 삭제되었습니다.'))
+           )}>전체 삭제</DeleteBtn>
         </DeleteBox>
 
         <TotalBox>
           <div className="total_payment">
             <p>총 결제금액</p>
-            <p className='money'>153,600</p>
+            <p className='money'>
+            {total.toLocaleString('ko-KR')}
+            </p>
             <span className='plus'></span>
           </div>
 
           <div className="delivery_fee">
             <p>배송비</p>
-            <p className='money'>153,600</p>
+            <p className='money'>{total>=30000 ? '0' : '2500'}</p>
             <span className='mius'></span>
           </div>
 
