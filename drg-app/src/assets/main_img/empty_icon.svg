@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="67" height="67" viewBox="0 0 67 67">
+    <defs>
+        <style>
+            .cls-2{fill:#fff}
+        </style>
+    </defs>
+    <g id="icon" transform="translate(-920 -168)">
+        <circle id="Circle" cx="33.5" cy="33.5" r="33.5" fill="#ddd" transform="translate(920 168)"/>
+        <g id="img" transform="translate(0 4)">
+            <rect id="사각형_361" width="8" height="32" class="cls-2" rx="4" transform="translate(950 176)"/>
+            <circle id="타원_131" cx="4" cy="4" r="4" class="cls-2" transform="translate(950 212)"/>
+        </g>
+    </g>
+</svg>

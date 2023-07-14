@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, NavLink, useMatch } from 'react-router-dom';
+import Cart from '../pages/Cart';
+import { useSelector } from 'react-redux';
 
 const Headers = styled.header`
   display: flex;
@@ -53,6 +55,20 @@ const UtilBox=styled.div`
 
 const UtilIcon=styled.div`
   padding: 0 5px;
+  position: relative;
+  span{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    top: 0;
+    right: 3px;
+    background-color: #4f342a;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 600;
+  }
 `
 
 
@@ -60,6 +76,7 @@ const UtilIcon=styled.div`
 export default function Header() {
 
   const active = useMatch('/clansing');
+  const state = useSelector((state)=>state.cart);
 
   return (
     <>
@@ -96,7 +113,9 @@ export default function Header() {
           </UtilIcon>
 
           <UtilIcon>
-            <Link to='/cart'><img src={process.env.PUBLIC_URL + '/assets/main_img/util_cart.svg'} alt='장바구니'/></Link>
+            <Link to='/cart'><img src={process.env.PUBLIC_URL + '/assets/main_img/util_cart.svg'} alt='장바구니'/>
+              <span>{state.length}</span>
+            </Link>
           </UtilIcon>
           
           <UtilIcon>

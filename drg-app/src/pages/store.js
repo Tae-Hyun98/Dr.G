@@ -39,11 +39,17 @@ const cart = createSlice({
 
     deleteAll(){
       return [];
+    },
+
+    deleteItem(state, action){
+      const index = state.filter((el)=> 
+      el.id===action.payload.id);
+      console.log(index)
     }
   }
 })
 
-export const {addItem, plusCount, miusCount, deleteAll} = cart.actions
+export const {addItem, plusCount, miusCount, deleteAll, deleteItem} = cart.actions
 
 export default configureStore({
   reducer:{
