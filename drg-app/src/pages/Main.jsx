@@ -90,8 +90,6 @@ const BestSlides=styled.div`
       background-color: #2fcab0;
     }
   }
-/*   .swiper-button-prev{left: -10px;z-index:5}
-  .swiper-button-next{right: 0px;z-index:5} */
 `
 
 const BestImg=styled.div`
@@ -570,7 +568,7 @@ export default function Main() {
               bests.map((best, index) => {
                 return (
                 <SwiperSlide key={index} className='best_slide'>
-                  <Link to>
+                  <Link to={``}>
                     <BestImg>
                       <img src={best.image} alt="best_img" />
                       <div className='hover_cart'>
