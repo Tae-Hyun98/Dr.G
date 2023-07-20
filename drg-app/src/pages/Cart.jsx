@@ -371,6 +371,7 @@ export default function Cart() {
           <DeleteBtn type='button' onClick={()=>(
             dispatch(deleteItem({checkItems: [...checkList]}, 
               setCheckList([]))))}>선택 삭제</DeleteBtn>
+              
           <DeleteBtn type='button' onClick={()=>(
             dispatch(deleteAll(), alert('전체 삭제되었습니다.'))
            )}>전체 삭제</DeleteBtn>

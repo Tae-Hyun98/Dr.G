@@ -89,7 +89,7 @@ export default function CleansingDetail(props) {
 
             <div className="delivery_wrap">
               <span>배송</span>
-              <span>+3000원<span className='free'> (30,000원 이상 무료배송)</span></span>
+              <span>+3000원<span className='free'> (50,000원 이상 무료배송)</span></span>
             </div>
 
 
