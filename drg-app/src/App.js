@@ -24,6 +24,7 @@ import CreamDetail from './pages/CreamDetail';
 import ScrubDetail from './pages/ScrubDetail';
 import TonerDetail from './pages/TonerDetail';
 import AmpleDetail from './pages/AmpleDetail';
+import Join from './pages/Join';
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path='/cream' element={<Cream/>}/>
 
         <Route path='/login' element={<Login/>}/>
+        <Route path='/login/join' element={<Join/>}/>
 
         <Route path='cleansing/cleansingdetail/:id' element={<CleansingDetail cleansings={cleansings}/>}/>
         <Route path='cream/creamdetail/:id' element={<CreamDetail creams={creams}/>}/>

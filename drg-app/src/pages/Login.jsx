@@ -224,10 +224,12 @@ export default function Login() {
               </Sns>
 
               <SignUp>
-                <button type='button' className='join'>
-                  <span>아직 회원이 아니세요?</span>
-                  <span><b>회원가입</b></span>
-                </button>
+                <Link to={`/login/join`}>
+                  <button type='button' className='join'>
+                    <span>아직 회원이 아니세요?</span>
+                    <span><b>회원가입</b></span>
+                  </button>
+                </Link>
               </SignUp>
         </LoginContainer>
     </>
