@@ -46,7 +46,7 @@ const cart = createSlice({
         const index = state.findIndex(el=>{
           return el.id===ch
         })
-        state.slice().splice(index,1)
+        state.splice(index,1)
 
       })
 

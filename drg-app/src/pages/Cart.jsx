@@ -368,7 +368,7 @@ export default function Cart() {
         </div>
 
         <DeleteBox style={{display:state.length>0 ? 'block' : 'none'}}>
-          <DeleteBtn type='button' onClick={()=>(dispatch(deleteItem({id:checkList,  data: {checkList: checkList}})))}>선택 삭제</DeleteBtn>
+          <DeleteBtn type='button' onClick={()=>(dispatch(deleteItem({id:checkList, data: {checkList: checkList}}, setCheckList([]))))}>선택 삭제</DeleteBtn>
           <DeleteBtn type='button' onClick={()=>(
             dispatch(deleteAll(), alert('전체 삭제되었습니다.'))
            )}>전체 삭제</DeleteBtn>
