@@ -261,7 +261,6 @@ export default function Cart() {
       setCheckList([]);
     }
   }
-  console.log(checkList)
   
   let total=0;
   // 할인이 있다면 할인된가격 total에 리턴, 없다면 원가리턴
@@ -366,9 +365,12 @@ export default function Cart() {
             }
           </ul>
         </div>
-
+        
+        {/* {선택삭제 클릭시 현재 checkList를 배열로넘긴후, checkList빈배열로 초기화} */}
         <DeleteBox style={{display:state.length>0 ? 'block' : 'none'}}>
-          <DeleteBtn type='button' onClick={()=>(dispatch(deleteItem({id:checkList, data: {checkList: checkList}}, setCheckList([]))))}>선택 삭제</DeleteBtn>
+          <DeleteBtn type='button' onClick={()=>(
+            dispatch(deleteItem({checkItems: [...checkList]}, 
+              setCheckList([]))))}>선택 삭제</DeleteBtn>
           <DeleteBtn type='button' onClick={()=>(
             dispatch(deleteAll(), alert('전체 삭제되었습니다.'))
            )}>전체 삭제</DeleteBtn>
