@@ -42,10 +42,15 @@ const cart = createSlice({
     },
 
     deleteItem(state, action){
-      const index = state.findIndex((el)=> 
-      el.id===action.payload);
-      console.log(index)
-      state.splice(index,1)
+      action.payload.data.checkList.forEach((ch)=>{
+        const index = state.findIndex(el=>{
+          return el.id===ch
+        })
+        state.slice().splice(index,1)
+
+      })
+
+        // return state.filter((el)=> el!==el.id);
     }
   }
 })

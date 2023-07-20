@@ -248,6 +248,7 @@ export default function Cart() {
     }else{
       setCheckList(checkList.filter(el=>el!==id))
     }
+
   }
 
   //전체체크박스 누를시 전체체크 모든 id값이 배열에 담기는부분
@@ -334,7 +335,7 @@ export default function Cart() {
                 return(
                   <li key={i}>
                     <div className="check">
-                      <input type="checkbox" value={product.id} onChange={(e) => changeSelect(e.target.checked, product.id)} checked={checkList.includes(product.id)?true:false}/>
+                      <input type="checkbox" value={product.id||''} onChange={(e) => changeSelect(e.target.checked, product.id)} checked={checkList.includes(product.id)?true:false}/>
                     </div>
 
                     <div className="item_name">
@@ -367,7 +368,7 @@ export default function Cart() {
         </div>
 
         <DeleteBox style={{display:state.length>0 ? 'block' : 'none'}}>
-          <DeleteBtn type='button' onClick={()=>(dispatch(deleteItem({id:checkList, count:checkList.length})))}>선택 삭제</DeleteBtn>
+          <DeleteBtn type='button' onClick={()=>(dispatch(deleteItem({id:checkList,  data: {checkList: checkList}})))}>선택 삭제</DeleteBtn>
           <DeleteBtn type='button' onClick={()=>(
             dispatch(deleteAll(), alert('전체 삭제되었습니다.'))
            )}>전체 삭제</DeleteBtn>
