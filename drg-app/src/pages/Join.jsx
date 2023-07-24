@@ -7,7 +7,7 @@ const JoinBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 100px 0;
+  padding: 50px 0;
   .join_inner{
     width: 800px;
     padding: 0px 50px;
@@ -263,12 +263,12 @@ export default function Join() {
 
               <div className="terms">
                 <label htmlFor="terms01">
-                  <input type="checkbox" id='terms01'/>
+                  <input type="checkbox" id='terms01' required/>
                   이용약관 동의<span> (필수)</span>
                 </label>
 
                 <label htmlFor="terms02">
-                  <input type="checkbox" id='terms02'/>
+                  <input type="checkbox" id='terms02' required/>
                   개인정보의 수집 및 이용에 관한 동의<span> (필수)</span>
                 </label>
 
