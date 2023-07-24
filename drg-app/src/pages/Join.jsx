@@ -94,7 +94,23 @@ const TermsBox = styled.fieldset`
     font-weight: 600;
   }
   .terms_agree_box{
-    padding: 15px 15px 20px 20px;
+    padding: 15px 15px 30px 30px;
+    .terms{
+      padding: 10px;
+    }
+    label{
+      display: block;
+      margin-bottom: 5px;
+      span{
+        color: red;
+      }
+      &:last-child{
+        margin-bottom: 0;
+      }
+      &.all{
+        font-size: 18px;
+      }
+    }
   }
 
   
@@ -230,7 +246,7 @@ export default function Join() {
             <legend>이용약관 및 마케팅 수신동의</legend>
             <div className="terms_agree_box">
               <div className="terms_all_check">
-                <label htmlFor="all_chk">
+                <label htmlFor="all_chk" className='all'>
                   <input type="checkbox" id='all_chk'/>
                   약관 전체 동의합니다.
                 </label>
