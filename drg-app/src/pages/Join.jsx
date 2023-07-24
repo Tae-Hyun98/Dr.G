@@ -57,6 +57,9 @@ const JoinField = styled.div`
       color: #777;
       &.rule{
         width: 100%;
+        font-size: 12px;
+        color: #666;
+        margin-top: 5px;
       }
     }
     .check_gender{
@@ -83,6 +86,21 @@ const JoinField = styled.div`
   }
 `
 
+const TermsBox = styled.fieldset`
+  margin-top: 20px;
+  legend{
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .terms_agree_box{
+    padding: 15px 15px 20px 20px;
+  }
+
+  
+`
+
+
 export default function Join() {
   return (
     <JoinBox>
@@ -101,6 +119,7 @@ export default function Join() {
                 <p>아이디</p>
                 <div className="insert">
                   <input type="text" required/>
+                  <p className='rule'>*영문, 숫자를 포함한 5자 이상 입력해주세요</p>
                 </div>
               </label>
             </JoinField>
@@ -205,6 +224,45 @@ export default function Join() {
               </label>
             </JoinField>
           </form>
+        </div>
+
+          <TermsBox>
+            <legend>이용약관 및 마케팅 수신동의</legend>
+            <div className="terms_agree_box">
+              <div className="terms_all_check">
+                <label htmlFor="all_chk">
+                  <input type="checkbox" id='all_chk'/>
+                  약관 전체 동의합니다.
+                </label>
+              </div>
+
+              <div className="terms">
+                <label htmlFor="terms01">
+                  <input type="checkbox" id='terms01'/>
+                  이용약관 동의<span>(필수)</span>
+                </label>
+
+                <label htmlFor="terms02">
+                  <input type="checkbox" id='terms02'/>
+                  개인정보의 수집 및 이용에 관한 동의<span>(필수)</span>
+                </label>
+
+                <label htmlFor="terms03">
+                  <input type="checkbox" id='terms03'/>
+                  개인정보수집 및 활용에 대한 동의 (선택) 
+                </label>
+
+                <label htmlFor="terms01">
+                  <input type="checkbox" id='terms01'/>
+                  혜택 알림 이메일, 문자 수신 동의 (선택)
+                </label>
+              </div>
+            </div>
+          </TermsBox>
+
+        <div className="button_area">
+          <button>가입하기</button>
+          <button>취소</button>
         </div>
       </div>
     </JoinBox>

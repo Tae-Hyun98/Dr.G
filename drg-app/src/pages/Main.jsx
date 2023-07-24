@@ -587,9 +587,9 @@ export default function Main() {
                     }
                     {
                       best.sale>0&&
-                      <p className='discount_price'>{(best.price-((best.price)*(best.sale/100))).toLocaleString('ko-KR')}원</p>
+                      <p className='discount_price'>{(best.price - ((best.price)*(best.sale/100))).toLocaleString('ko-KR')}원</p>
                     }
-                      <p className={best.sale>0 ? 'line' : 'price'}>{best.price}원</p>
+                      <p className={best.sale>0 ? 'line' : 'price'}>{best.price.toLocaleString('ko-KR')}원</p>
                     </Price>
                   </Link>
                 </SwiperSlide>
