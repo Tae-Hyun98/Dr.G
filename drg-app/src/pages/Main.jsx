@@ -892,7 +892,7 @@ export default function Main() {
 
       <Footer/>
 
-      <TopBtn>
+      <TopBtn type='button'>
         <ArrowUpwardIcon/>
       </TopBtn>
     </>
