@@ -1,8 +1,9 @@
 import React from 'react'
 import './style.css'
-// import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
+import { addItem } from './store'
 
 const Btn = styled.button`
   width: 150px;
@@ -37,6 +38,7 @@ export default function TonerDetail(props) {
 
   const {toners} = props
   const {id} = useParams()
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -99,7 +101,9 @@ export default function TonerDetail(props) {
           </div>
 
           <div className="btn_wrap">
-            <CartBtn>장바구니</CartBtn>
+            <CartBtn onClick={()=> dispatch(addItem({
+              id:toners[id].id, image:toners[id].image, title:toners[id].title, sale: toners[id].sale, count:1, price: toners[id].price
+            }))}>장바구니</CartBtn>
             <CartBtn>구매하기</CartBtn>
             
           </div>

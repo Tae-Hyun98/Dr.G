@@ -1,8 +1,9 @@
 import React from 'react'
 import './style.css'
-// import {useDispatch, useSelector} from 'react-redux'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { addItem } from './store'
 
 const Btn = styled.button`
   width: 150px;
@@ -36,6 +37,8 @@ const CartBtn = styled.button`
 export default function AmpleDetail(props) {
     const {amples} = props
     const {id} = useParams()
+    const dispatch = useDispatch();
+    
   return (
     <>
      <div className="wrapping">
@@ -97,7 +100,9 @@ export default function AmpleDetail(props) {
                 </div>
 
                 <div className="btn_wrap">
-                <CartBtn>장바구니</CartBtn>
+                <CartBtn onClick={()=> dispatch(addItem({
+                    id:amples[id].id, image:amples[id].image, title:amples[id].title, sale: amples[id].sale, count:1, price: amples[id].price
+                  }))}>장바구니</CartBtn>
                 <CartBtn>구매하기</CartBtn>
                 
                 </div>

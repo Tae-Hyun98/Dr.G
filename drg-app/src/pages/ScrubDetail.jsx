@@ -1,8 +1,9 @@
 import React from 'react'
 import './style.css'
-// import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
+import { addItem } from './store'
 
 
 const Btn = styled.button`
@@ -37,6 +38,7 @@ export default function ScrubDetail(props) {
 
   const {scrubs} = props
   const {id} = useParams()
+  const dispatch = useDispatch()
 
   return (
     <>
@@ -100,7 +102,9 @@ export default function ScrubDetail(props) {
                 </div>
 
                 <div className="btn_wrap">
-                  <CartBtn>장바구니</CartBtn>
+                  <CartBtn onClick={()=> dispatch(addItem({
+                    id:scrubs[id].id, image:scrubs[id].image, title:scrubs[id].title, sale: scrubs[id].sale, count:1, price: scrubs[id].price
+                  }))}>장바구니</CartBtn>
                   <CartBtn>구매하기</CartBtn>
                   
                 </div>
