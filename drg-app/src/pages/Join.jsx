@@ -18,6 +18,9 @@ const JoinBox = styled.div`
         text-align: center;
       }
     }
+    h2{
+      margin-bottom: 15px;
+    }
   }
   .join_form{
     margin-bottom: 50px;
@@ -87,7 +90,7 @@ const JoinField = styled.div`
 `
 
 const TermsBox = styled.fieldset`
-  margin-top: 20px;
+  margin: 30px 0 50px 0;
   legend{
     text-align: center;
     font-size: 22px;
@@ -100,6 +103,7 @@ const TermsBox = styled.fieldset`
     }
     label{
       display: block;
+      cursor: pointer;
       margin-bottom: 5px;
       span{
         color: red;
@@ -112,8 +116,14 @@ const TermsBox = styled.fieldset`
       }
     }
   }
-
   
+`
+
+const Button = styled.button`
+  width: 50%;
+  line-height: 50px;
+  cursor: pointer;
+  border: 1px solid #ccc;
 `
 
 
@@ -126,8 +136,7 @@ export default function Join() {
         </div>
 
         <div className="join_essential">
-          <h2>필수정보</h2>
-          <p style={{paddingBottom:'15px'}}>필수정보를 입력해주세요</p>
+          <h2>필수입력정보</h2>
 
           <form className="join_form">
             <JoinField className="join_id">
@@ -212,8 +221,9 @@ export default function Join() {
         </div>
 
         <div className="join_choice">
-          <form className='join_select'>
             <h2>선택입력정보</h2>
+
+          <form className='join_select'>
             <JoinField className="join_gender">
               <label className="label">
                 <p>주소</p>
@@ -255,12 +265,12 @@ export default function Join() {
               <div className="terms">
                 <label htmlFor="terms01">
                   <input type="checkbox" id='terms01'/>
-                  이용약관 동의<span>(필수)</span>
+                  이용약관 동의<span> (필수)</span>
                 </label>
 
                 <label htmlFor="terms02">
                   <input type="checkbox" id='terms02'/>
-                  개인정보의 수집 및 이용에 관한 동의<span>(필수)</span>
+                  개인정보의 수집 및 이용에 관한 동의<span> (필수)</span>
                 </label>
 
                 <label htmlFor="terms03">
@@ -268,8 +278,8 @@ export default function Join() {
                   개인정보수집 및 활용에 대한 동의 (선택) 
                 </label>
 
-                <label htmlFor="terms01">
-                  <input type="checkbox" id='terms01'/>
+                <label htmlFor="terms04">
+                  <input type="checkbox" id='terms04'/>
                   혜택 알림 이메일, 문자 수신 동의 (선택)
                 </label>
               </div>
@@ -277,8 +287,8 @@ export default function Join() {
           </TermsBox>
 
         <div className="button_area">
-          <button>가입하기</button>
-          <button>취소</button>
+          <Button>가입하기</Button>
+          <Button>취소</Button>
         </div>
       </div>
     </JoinBox>
