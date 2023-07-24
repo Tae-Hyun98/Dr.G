@@ -171,12 +171,6 @@ const CartWrap = styled.div`
           background-size: 10px 10px;
           background-color: #fff;
         }
-        &.mius{
-          background: url(/assets/main_img/cart_mius.svg) no-repeat;
-          background-position: center center;
-          background-size: 10px 10px;
-          background-color: #fff;
-        }
         &.equal{
           background: url(/assets/main_img/cart_equal.svg) no-repeat;
           background-position: center center;
@@ -389,7 +383,7 @@ export default function Cart() {
           <div className="delivery_fee">
             <p>배송비</p>
             <p className='money'>{total>=50000 ? '0' : '2500'}</p>
-            <span className='mius'></span>
+            <span className='equal'></span>
           </div>
 
           <div className="total_payment">
