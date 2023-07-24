@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const JoinBox = styled.div`
@@ -127,6 +127,27 @@ const Button = styled.button`
 
 
 export default function Join() {
+
+  const [agreeList, setAgreeList] = useState([]);
+
+  const changeSelect = (checked, name) => {
+    if(checked) {
+      setAgreeList([...agreeList, name]);
+    }else{
+      setAgreeList(agreeList.filter(el=>el!==name))
+    }
+
+  }
+
+  //전체체크박스 누를시 전체체크 모든 id값이 배열에 담기는부분
+  const AllCheck = (checked) => {
+    if(checked){
+      setAgreeList(["terms01", "terms02", "terms03", "terms04"])
+    }else{
+      setAgreeList([]);
+    }
+  }
+  console.log(agreeList)
   return (
     <JoinBox>
       <div className="join_inner">
@@ -256,29 +277,29 @@ export default function Join() {
             <div className="terms_agree_box">
               <div className="terms_all_check">
                 <label htmlFor="all_chk" className='all'>
-                  <input type="checkbox" id='all_chk'/>
+                  <input type="checkbox" id='all_chk' onChange={AllCheck} checked={agreeList.length===4 ? true:false}/>
                   약관 전체 동의합니다.
                 </label>
               </div>
 
               <div className="terms">
                 <label htmlFor="terms01">
-                  <input type="checkbox" id='terms01' required/>
+                  <input type="checkbox" name='terms01' id='terms01' required onChange={(e) => changeSelect(e.target.checked, e.target.name)} checked={agreeList.includes('terms01')?true:false}/>
                   이용약관 동의<span> (필수)</span>
                 </label>
 
                 <label htmlFor="terms02">
-                  <input type="checkbox" id='terms02' required/>
+                  <input type="checkbox" name='terms02' id='terms02' required onChange={(e) => changeSelect(e.target.checked, e.target.name)} checked={agreeList.includes('terms02')?true:false}/>
                   개인정보의 수집 및 이용에 관한 동의<span> (필수)</span>
                 </label>
 
                 <label htmlFor="terms03">
-                  <input type="checkbox" id='terms03'/>
+                  <input type="checkbox" name='terms03' id='terms03' onChange={(e) => changeSelect(e.target.checked, e.target.name)} checked={agreeList.includes('terms03')?true:false}/>
                   개인정보수집 및 활용에 대한 동의 (선택) 
                 </label>
 
                 <label htmlFor="terms04">
-                  <input type="checkbox" id='terms04'/>
+                  <input type="checkbox" name='terms04' id='terms04' onChange={(e) => changeSelect(e.target.checked, e.target.name)} checked={agreeList.includes('terms04')?true:false}/>
                   혜택 알림 이메일, 문자 수신 동의 (선택)
                 </label>
               </div>
