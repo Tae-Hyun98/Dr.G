@@ -239,7 +239,7 @@ export default function Cart() {
   const state = useSelector((state)=>state.cart);
   const dispatch = useDispatch();
 
-  const [checkList, setCheckList] = useState([]);
+  const [checkList, setCheckList] = useState('');
   
   //각 체크박스 체크시 checkList에 담기는부분
   const changeSelect = (checked, id) => {
