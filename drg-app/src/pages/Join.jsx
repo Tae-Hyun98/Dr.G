@@ -10,8 +10,7 @@ const JoinBox = styled.div`
   padding: 100px 0;
   .join_inner{
     width: 800px;
-    border: 1px solid #000;
-    padding: 50px;
+    padding: 0px 50px;
     .join_title{
       margin-bottom: 40px;
       h1{
@@ -97,7 +96,7 @@ const TermsBox = styled.fieldset`
     font-weight: 600;
   }
   .terms_agree_box{
-    padding: 15px 15px 30px 30px;
+    padding: 15px 15px 20px 30px;
     .terms{
       padding: 10px;
     }
@@ -189,18 +188,18 @@ export default function Join() {
             </JoinField>
 
             <JoinField className="join_gender">
-              <label className="label">
+              <div className="label">
                 <p>성별</p>
                 <div className="check_gender">
-                  <input type="radio" id='man' name='gender' checked/>
+                  <input type="radio" id='man' name='gender' readOnly checked/>
                   <label htmlFor="man">남자</label>
                 </div>
                 
                 <div className="check_gender">
-                  <input type="radio" id='woman' name='gender'/>
+                  <input type="radio" id='woman' name='gender' readOnly/>
                   <label htmlFor="woman">여자</label>
                 </div>
-              </label>
+              </div>
             </JoinField>
 
             <JoinField className="join_phone">
