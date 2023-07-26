@@ -36,27 +36,37 @@ const JoinField = styled.div`
     border-bottom: 1px solid #ccc;
   }
   .label{
-    width: 100%;
+    font-size: 14px;
     display: flex;
     align-items: center;
-    .insert{
-      width: calc(100% - 100px);
-      span{
+    letter-spacing: -1px;
+    color: #777;
+    span{
         display: inline-block;
-        width: 19px;
-        text-align: center;
+        width: 100px;
+      }
+    .insert{
+      input{
+        height: 40px;
+        padding-left: 10px;
+        border:1px solid #ccc;
+      }
+      span{
+        width: auto;
+        margin: 0 5px;
+      }
+      .address{
+      input{
+        width: 100%;
+        margin-top: 10px;
+        &:first-child{
+          margin-top: 0;
+        }
+      }
       }
     }
-    input{
-      height: 40px;
-      padding-left: 10px;
-      border:1px solid #ccc;
-    }
+    
     p{
-      width: 100px;
-      letter-spacing: -1px;
-      font-size: 14px;
-      color: #777;
       &.rule{
         width: 100%;
         font-size: 12px;
@@ -75,16 +85,7 @@ const JoinField = styled.div`
         padding-left: 5px;
       }
     }
-    .address{
-      display: flex;
-      flex-direction: column;
-      input{
-        margin-top: 10px;
-        &:first-child{
-          margin-top: 0;
-        }
-      }
-    }
+    
   }
 `
 
@@ -147,7 +148,8 @@ export default function Join() {
       setAgreeList([]);
     }
   }
-  console.log(agreeList)
+
+
   return (
     <JoinBox>
       <div className="join_inner">
@@ -161,7 +163,7 @@ export default function Join() {
           <form className="join_form">
             <JoinField className="join_id">
               <label className="label">
-                <p>아이디</p>
+                <span>아이디</span>
                 <div className="insert">
                   <input type="text" required/>
                   <p className='rule'>*영문, 숫자를 포함한 5자 이상 입력해주세요</p>
@@ -171,7 +173,7 @@ export default function Join() {
 
             <JoinField className="join_pw">
               <label className="label">
-                <p>비밀번호</p>
+                <span>비밀번호</span>
                 <div className="insert">
                   <input type="password" required/>
                   <p className='rule'>*비밀번호는 영문, 숫자, 특수문자가 혼합된 8~12자 이내로 입력해주세요</p>
@@ -181,7 +183,7 @@ export default function Join() {
 
             <JoinField className="join_pwcheck">
               <label className="label">
-                <p>비밀번호 확인</p>
+                <span>비밀번호 확인</span>
                 <div className="insert">
                   <input type="password" required/>
                 </div>
@@ -190,7 +192,7 @@ export default function Join() {
 
             <JoinField className="join_name">
               <label className="label">
-                <p>이름</p>
+                <span>이름</span>
                 <div className="insert">
                   <input type="text" required/>
                 </div>
@@ -199,7 +201,7 @@ export default function Join() {
 
             <JoinField className="join_idcard">
               <label className="label">
-                <p>주민등록번호</p>
+                <span>주민등록번호</span>
                 <div className="insert">
                   <input type="text" placeholder='주민등록번호'/>
                   <span> - </span>
@@ -210,7 +212,7 @@ export default function Join() {
 
             <JoinField className="join_gender">
               <div className="label">
-                <p>성별</p>
+                <span>성별</span>
                 <div className="check_gender">
                   <input type="radio" id='man' name='gender' readOnly checked/>
                   <label htmlFor="man">남자</label>
@@ -225,7 +227,7 @@ export default function Join() {
 
             <JoinField className="join_phone">
               <label className="label">
-                <p>휴대전화</p>
+                <span>휴대전화</span>
                 <div className="insert">
                   <div className="phone">
                     <input type="text" required/>
@@ -246,7 +248,7 @@ export default function Join() {
           <form className='join_select'>
             <JoinField className="join_gender">
               <label className="label">
-                <p>주소</p>
+                <span>주소</span>
                 <div className="insert">
                   <div className="address">
                     <input style={{width:'190px'}} type="text" placeholder='우편번호'/>
@@ -259,7 +261,7 @@ export default function Join() {
 
             <JoinField className="join_gender">
               <label className="label">
-                <p>이메일</p>
+                <span>이메일</span>
                 <div className="insert">
                   <div className="email">
                     <input type="text"/>
