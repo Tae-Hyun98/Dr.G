@@ -149,6 +149,22 @@ export default function Join() {
     }
   }
 
+  // 값을 담을 usestate
+  const [id, setId] = useState('');
+  const [pw, setPw] = useState('');
+
+  const [idValid, setIdValid] = useState(false);
+  const [pwValid, setPwValid] = useState(false);
+
+  const ChkId = (e) => {
+    setId(e.target.value);
+    const reg = /^[A-Za-z0-9]*$/;
+    if(reg.test(id)){
+      setIdValid(true);
+    }else{
+      setIdValid(false);
+    }
+  }
 
   return (
     <JoinBox>
@@ -165,8 +181,18 @@ export default function Join() {
               <label className="label">
                 <span>아이디</span>
                 <div className="insert">
-                  <input type="text" required/>
-                  <p className='rule'>*영문, 숫자를 포함한 5자 이상 입력해주세요</p>
+                  <input 
+                  type="text"
+                  value={id}
+                  onChange={ChkId}
+                  required/>
+                  <p className='msg'>
+                    {
+                      !idValid&&id.length>0 && (
+                        <span>* 5자이상 영문자와 숫자를 포함하여 작성해주세요.</span>
+                      )
+                    }
+                  </p>
                 </div>
               </label>
             </JoinField>
