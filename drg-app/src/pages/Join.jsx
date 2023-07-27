@@ -67,7 +67,7 @@ const JoinField = styled.div`
     }
     
     p{
-      &.rule{
+      &.msg{
         width: 100%;
         font-size: 12px;
         color: #666;
@@ -153,16 +153,39 @@ export default function Join() {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
 
+  //메세지담는부분
+  const [idMsg, setIdMsg] = useState('')
+  const [pwMsg, setPwMsg] = useState('')
+
+  //유효성체크후 반환값
   const [idValid, setIdValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
 
+  //유효성체크
+  const idReg = /^[a-z0-9]{5,12}$/;
+  const pwReg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,}$/;
+
   const ChkId = (e) => {
-    setId(e.target.value);
-    const reg = /^[A-Za-z0-9]*$/;
-    if(reg.test(id)){
-      setIdValid(true);
-    }else{
+    const currentId = e.target.value;
+    setId(currentId);
+    if(!idReg.test(currentId)){
+      setIdMsg('* 5~12자 영소문자, 숫자를 포함하여 작성해주세요.')
       setIdValid(false);
+    }else{
+      setIdMsg('사용가능한 아이디입니다.')
+      setIdValid(true);
+    }
+  }
+
+  const ChkPw = (e) => {
+    const currentPw = e.target.value;
+    setPw(currentPw);
+    if(!pwReg.test(currentPw)){
+      setPwMsg('* 영문, 숫자, 특수문자가 혼합된 8자이상 입력해주세요');
+      setPwValid(false);
+    }else{
+      setPwMsg('사용가능한 비밀번호입니다.');
+      setPwValid(true);
     }
   }
 
@@ -183,16 +206,14 @@ export default function Join() {
                 <div className="insert">
                   <input 
                   type="text"
+                  name='id'
                   value={id}
                   onChange={ChkId}
                   required/>
-                  <p className='msg'>
-                    {
-                      !idValid&&id.length>0 && (
-                        <span>* 5자이상 영문자와 숫자를 포함하여 작성해주세요.</span>
-                      )
-                    }
-                  </p>
+                  {
+                    id.length>2&&
+                    <p className='msg' style={{color: idValid ? '#000' : 'red'}}>{idMsg}</p>
+                  }
                 </div>
               </label>
             </JoinField>
@@ -201,8 +222,15 @@ export default function Join() {
               <label className="label">
                 <span>비밀번호</span>
                 <div className="insert">
-                  <input type="password" required/>
-                  <p className='rule'>*비밀번호는 영문, 숫자, 특수문자가 혼합된 8~12자 이내로 입력해주세요</p>
+                  <input 
+                  type="password" 
+                  value={pw}
+                  onChange={ChkPw}
+                  required/>
+                  {
+                    id.length>2&&
+                    <p className='msg' style={{color: pwValid ? '#000' : 'red'}}>{pwMsg}</p>
+                  }
                 </div>
               </label>
             </JoinField>
@@ -211,7 +239,10 @@ export default function Join() {
               <label className="label">
                 <span>비밀번호 확인</span>
                 <div className="insert">
-                  <input type="password" required/>
+                  <input 
+                  type="password"
+                  
+                  required/>
                 </div>
               </label>
             </JoinField>
