@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, NavLink, useMatch } from 'react-router-dom';
-import Cart from '../pages/Cart';
 import { useSelector } from 'react-redux';
 
 const Headers = styled.header`
