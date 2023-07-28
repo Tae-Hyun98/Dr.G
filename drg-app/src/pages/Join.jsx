@@ -170,12 +170,12 @@ export default function Join() {
   const [pwValid, setPwValid] = useState(false);
   const [pwConfirmValid, setPwConfirmValid] = useState(false);
   const [nameValid, setNameValid] = useState(false);
+  const [disableBtn, setDisableBtn] = useState(false);
 
   //유효성체크
   const idReg = /^[a-z0-9]{5,12}$/;
   const pwReg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,}$/;
   const nameReg = /^[ㄱ-ㅎ가-힣a-zA-Z]+$/;
-  const phoneReg = /^(\d{0,3})(\d{0,4})(\d{0,4})$/;
 
   const ChkId = (e) => {
     const currentId = e.target.value;
@@ -228,6 +228,14 @@ export default function Join() {
   const TelChange = (e) => {
     const currentTel = e.target.value;
     setTel(currentTel.replace(/[^0-9]/g, '').replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`));
+  }
+
+  const buttonDisable = () => {
+    if(idValid&&pwValid&&pwConfirmValid&&nameValid&&agreeList.includes('terms01','terms02')){
+      return true;
+    }else{
+      return false
+    }
   }
 
   return (
@@ -315,7 +323,7 @@ export default function Join() {
               <label className="label">
                 <span>주민등록번호</span>
                 <div className="insert">
-                  <input type="text" placeholder='주민등록번호'/>
+                  <input type="text" maxLength='6' placeholder='주민등록번호'/>
                   <span> - </span>
                   <input type="password" />
                 </div>
@@ -423,7 +431,7 @@ export default function Join() {
           </TermsBox>
 
         <div className="button_area">
-          <Button>가입하기</Button>
+          <Button disabled={buttonDisable ? true:false}>가입하기</Button>
           <Button>취소</Button>
         </div>
       </div>
