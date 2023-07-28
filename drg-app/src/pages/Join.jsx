@@ -34,6 +34,9 @@ const JoinField = styled.div`
   padding: 15px 0;
   &.join_phone{
     border-bottom: 1px solid #ccc;
+    input{
+      width: 200px;
+    }
   }
   .label{
     font-size: 14px;
@@ -49,6 +52,7 @@ const JoinField = styled.div`
       input{
         height: 40px;
         padding-left: 10px;
+        margin: 5px 0;
         border:1px solid #ccc;
       }
       span{
@@ -56,13 +60,13 @@ const JoinField = styled.div`
         margin: 0 5px;
       }
       .address{
-      input{
-        width: 100%;
-        margin-top: 10px;
-        &:first-child{
-          margin-top: 0;
+        input{
+          width: 100%;
+          margin-top: 10px;
+          &:first-child{
+            margin-top: 0;
+          }
         }
-      }
       }
     }
     
@@ -71,7 +75,6 @@ const JoinField = styled.div`
         width: 100%;
         font-size: 12px;
         color: #666;
-        margin-top: 5px;
       }
     }
     .check_gender{
@@ -152,18 +155,27 @@ export default function Join() {
   // 값을 담을 usestate
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
+  const [pwConfirm, setPwConfirm] = useState('');
+  const [name, setName] = useState('');
+  const [tel, setTel] = useState('');
 
   //메세지담는부분
   const [idMsg, setIdMsg] = useState('')
   const [pwMsg, setPwMsg] = useState('')
+  const [pwConfirmMsg, setPwConfirmMsg] = useState('')
+  const [nameMsg, setNameMsg] = useState('')
 
   //유효성체크후 반환값
   const [idValid, setIdValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
+  const [pwConfirmValid, setPwConfirmValid] = useState(false);
+  const [nameValid, setNameValid] = useState(false);
 
   //유효성체크
   const idReg = /^[a-z0-9]{5,12}$/;
   const pwReg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,}$/;
+  const nameReg = /^[ㄱ-ㅎ가-힣a-zA-Z]+$/;
+  const phoneReg = /^(\d{0,3})(\d{0,4})(\d{0,4})$/;
 
   const ChkId = (e) => {
     const currentId = e.target.value;
@@ -189,6 +201,35 @@ export default function Join() {
     }
   }
 
+  const ChkPwConfirm = (e) => {
+    const currentPwConfirm = e.target.value;
+    setPwConfirm(currentPwConfirm);
+    if(pw!==currentPwConfirm){
+      setPwConfirmMsg('비밀번호가 일치하지않습니다.');
+      setPwConfirmValid(false);
+    }else{
+      setPwConfirmMsg('비밀번호가 일치합니다.');
+      setPwConfirmValid(true);
+    }
+  }
+
+  const ChkName = (e) => {
+    const currentName = e.target.value;
+    setName(currentName);
+    if(!nameReg.test(currentName)){
+      setNameMsg('한글, 영문 대/소문자를 사용해 주세요.');
+      setNameValid(false);
+    }else{
+      setNameMsg('')
+      setNameValid(true);
+    }
+  }
+
+  const TelChange = (e) => {
+    const currentTel = e.target.value;
+    setTel(currentTel.replace(/[^0-9]/g, '').replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`));
+  }
+
   return (
     <JoinBox>
       <div className="join_inner">
@@ -209,10 +250,11 @@ export default function Join() {
                   name='id'
                   value={id}
                   onChange={ChkId}
+                  autoFocus
                   required/>
                   {
                     id.length>2&&
-                    <p className='msg' style={{color: idValid ? '#000' : 'red'}}>{idMsg}</p>
+                    <p className='msg' style={{color: idValid ? 'blue' : 'red'}}>{idMsg}</p>
                   }
                 </div>
               </label>
@@ -229,7 +271,7 @@ export default function Join() {
                   required/>
                   {
                     id.length>2&&
-                    <p className='msg' style={{color: pwValid ? '#000' : 'red'}}>{pwMsg}</p>
+                    <p className='msg' style={{color: pwValid ? 'blue' : 'red'}}>{pwMsg}</p>
                   }
                 </div>
               </label>
@@ -241,8 +283,13 @@ export default function Join() {
                 <div className="insert">
                   <input 
                   type="password"
-                  
+                  value={pwConfirm}
+                  onChange={ChkPwConfirm}
                   required/>
+                  {
+                    pwConfirm.length>0&&
+                    <p className='msg' style={{color: pwConfirmValid ? 'blue' : 'red'}}>{pwConfirmMsg}</p>
+                  }
                 </div>
               </label>
             </JoinField>
@@ -251,7 +298,15 @@ export default function Join() {
               <label className="label">
                 <span>이름</span>
                 <div className="insert">
-                  <input type="text" required/>
+                  <input 
+                  type="text" 
+                  value={name}
+                  onChange={ChkName}
+                  required/>
+                  {
+                    name.length>0&&
+                    <p className='msg' style={{color: nameValid ? '' : 'red'}}>{nameMsg}</p>
+                  }
                 </div>
               </label>
             </JoinField>
@@ -287,11 +342,13 @@ export default function Join() {
                 <span>휴대전화</span>
                 <div className="insert">
                   <div className="phone">
-                    <input type="text" required/>
-                    <span> - </span>
-                    <input type="text" required/>
-                    <span> - </span>
-                    <input type="text" required/>
+                    <input 
+                    type="tel" 
+                    maxLength='13'
+                    value={tel}
+                    placeholder='전화번호를 입력해주세요'
+                    onChange={TelChange}
+                    required/>
                   </div>
                 </div>
               </label>
