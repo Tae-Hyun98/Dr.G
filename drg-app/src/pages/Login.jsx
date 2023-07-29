@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import users from '../dataset/userData';
 
 
 const Tit=styled.h1`
@@ -160,9 +161,39 @@ const SignUp = styled.div`
 
 export default function Login() {
 
+  const navigate = useNavigate();
+
+  //임시유저데이터
+  const user = 
+    {
+      userId : 'xogus12',
+      userPw : 'xogus1234@'
+    }
+  
+
   const [password,setPassword]=useState(false)
   //true false 토글핸들러
   const clickHandle=()=>{setPassword(!password)}
+
+  const [id, setId] = useState('');
+  const [pw, setPw] = useState('');
+
+  const changeId = (e) => {
+    setId(e.target.value);
+  }
+
+  const changePw = (e) => {
+    setPw(e.target.value);
+  }
+
+  const userChk = () => {
+      if(user.userId === id && user.userPw === pw){
+        alert('로그인에 성공했습니다.');
+        navigate('/')
+      }else{
+        alert('아이디 또는 비밀번호를 확인해주세요')
+      }
+  }
 
   return (
     <>
@@ -171,11 +202,21 @@ export default function Login() {
 
           <LoginForm>
             <LoginBox>
-              <Input type='text' placeholder='아이디를 입력해주세요' required/>
+              <Input 
+              type='text' 
+              placeholder='아이디를 입력해주세요' 
+              value={id}
+              onChange={changeId}
+              required/>
             </LoginBox>
 
             <LoginBox>
-              <Input type={password ? 'text' : 'password'} placeholder='비밀번호를 입력해주세요' required/>
+              <Input 
+              type={password ? 'text' : 'password'} 
+              placeholder='비밀번호를 입력해주세요' 
+              value={pw}
+              onChange={changePw}
+              required/>
               <EyeIcon onClick={clickHandle}>
                 {
                   password ? <VisibilityOffIcon/> : <VisibilityIcon/>
@@ -197,7 +238,7 @@ export default function Login() {
               </FindBox>
 
               <LoginBtn>
-                <button type='button'>로그인</button>
+                <button type='button' onClick={userChk}>로그인</button>
               </LoginBtn>
 
               <Sns>
