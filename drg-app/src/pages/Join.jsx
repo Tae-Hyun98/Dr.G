@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const JoinBox = styled.div`
@@ -12,7 +13,7 @@ const JoinBox = styled.div`
     width: 800px;
     padding: 0px 50px;
     .join_title{
-      margin-bottom: 40px;
+      margin-bottom: 25px;
       h1{
         text-align: center;
       }
@@ -100,57 +101,62 @@ const TermsBox = styled.fieldset`
     font-weight: 600;
   }
   .terms_agree_box{
-    padding: 15px 15px 20px 30px;
-    .terms{
-      padding: 10px;
+    padding: 20px 0px 20px 35px;
+    input{
+      cursor: pointer;
+      margin-right: 5px;
     }
     label{
-      display: block;
       cursor: pointer;
-      margin-bottom: 5px;
-      span{
-        color: red;
-      }
-      &:last-child{
-        margin-bottom: 0;
-      }
-      &.all{
-        font-size: 18px;
+    }
+    .terms{
+      padding: 10px;
+      li{
+        margin-bottom: 5px;
+        &:last-child{
+          margin-bottom: 0;
+        }
+        label{
+          span{
+            color: red;
+          }
+          &:last-child{
+            margin-bottom: 0;
+          }
+          &.all{
+            font-size: 18px;
+          }
+        }
       }
     }
   }
-  
 `
 
+//props를 이용한 버튼색과 배경색변경
 const Button = styled.button`
-  width: 50%;
+  width: 48%;
   line-height: 50px;
+  font-size: 16px;
   cursor: pointer;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
+  margin-right: 2%;
+  color: ${({styleboolean}) => styleboolean? '#b0b0b0' : '#fff'};
+  background-color: ${({styleboolean}) => styleboolean? '#e6e6e6' : '#00c7ae'};
+  &:last-child{
+    margin-right: 0;
+    color: #000;
+    background-color: #fefcfc;
+  }
+`
+
+const PostBtn = styled.button`
+  line-height: 40px;
+  margin-left: 5px;
+  padding: 0 5px;
 `
 
 
 export default function Join() {
-
-  const [agreeList, setAgreeList] = useState([]);
-
-  const changeSelect = (checked, name) => {
-    if(checked) {
-      setAgreeList([...agreeList, name]);
-    }else{
-      setAgreeList(agreeList.filter(el=>el!==name))
-    }
-
-  }
-
-  //전체체크박스 누를시 전체체크 모든 id값이 배열에 담기는부분
-  const AllCheck = (checked) => {
-    if(checked){
-      setAgreeList(["terms01", "terms02", "terms03", "terms04"])
-    }else{
-      setAgreeList([]);
-    }
-  }
 
   // 값을 담을 usestate
   const [id, setId] = useState('');
@@ -170,12 +176,13 @@ export default function Join() {
   const [pwValid, setPwValid] = useState(false);
   const [pwConfirmValid, setPwConfirmValid] = useState(false);
   const [nameValid, setNameValid] = useState(false);
-  const [disableBtn, setDisableBtn] = useState(false);
+  const [telValid, setTelValid]= useState(false);
+  const [btnAllow,setBtnAllow] = useState(false);
 
   //유효성체크
   const idReg = /^[a-z0-9]{5,12}$/;
   const pwReg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,}$/;
-  const nameReg = /^[ㄱ-ㅎ가-힣a-zA-Z]+$/;
+  const nameReg = /^[ㄱ-ㅎ가-힣a-zA-Z]{2,}$/;
 
   const ChkId = (e) => {
     const currentId = e.target.value;
@@ -225,18 +232,57 @@ export default function Join() {
     }
   }
 
+  //휴대전화 하이픈생성
   const TelChange = (e) => {
     const currentTel = e.target.value;
+    setTel(currentTel);
     setTel(currentTel.replace(/[^0-9]/g, '').replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`));
-  }
-
-  const buttonDisable = () => {
-    if(idValid&&pwValid&&pwConfirmValid&&nameValid&&agreeList.includes('terms01','terms02')){
-      return true;
+    if(tel!==''&&currentTel.length===13){
+      setTelValid(true);
     }else{
-      return false
+      setTelValid(false);
     }
   }
+
+
+  //약관동의
+  const [agreeList, setAgreeList] = useState([]);
+
+  const changeSelect = (checked, name) => {
+    if(checked) {
+      setAgreeList([...agreeList, name]);
+    }else{
+      setAgreeList(agreeList.filter(el=>el!==name))
+    }
+  }
+
+  //전체체크박스 누를시 전체체크 모든 id값이 배열에 담기는부분
+  const AllCheck = (e) => {
+    e.target.checked ? setAgreeList(["terms01", "terms02", "terms03", "terms04"]) : setAgreeList([]);
+  }
+
+
+   //취소
+   const navigate = useNavigate();
+   const CancleBtn = () =>{
+     navigate('/login');
+   }
+
+   //가입하기
+  const GoJoin = () => {
+    alert('가입을 환영합니다. '+ name +'님')
+    navigate('/login');
+  }
+
+  //가입하기 버튼 활성조건
+  useEffect(() => {
+    if(idValid&&pwValid&&pwConfirmValid&&nameValid&&telValid&&agreeList.includes('terms01')&&agreeList.includes('terms02')){
+      setBtnAllow(false);
+    }else{
+      setBtnAllow(true);
+    }
+  }, [idValid, pwValid, pwConfirmValid, nameValid, telValid, agreeList]);
+
 
   return (
     <JoinBox>
@@ -325,7 +371,7 @@ export default function Join() {
                 <div className="insert">
                   <input type="text" maxLength='6' placeholder='주민등록번호'/>
                   <span> - </span>
-                  <input type="password" />
+                  <input type="password" maxLength='7'/>
                 </div>
               </label>
             </JoinField>
@@ -374,6 +420,7 @@ export default function Join() {
                 <div className="insert">
                   <div className="address">
                     <input style={{width:'190px'}} type="text" placeholder='우편번호'/>
+                    <PostBtn type='button'>우편번호찾기</PostBtn>
                     <input type="text" placeholder='주소 검색' />
                     <input type="text" placeholder='상세주소를 입력해 주세요.' />
                   </div>
@@ -397,7 +444,7 @@ export default function Join() {
         </div>
 
           <TermsBox>
-            <legend>이용약관 및 마케팅 수신동의</legend>
+          <legend>이용약관 및 마케팅 수신동의</legend>
             <div className="terms_agree_box">
               <div className="terms_all_check">
                 <label htmlFor="all_chk" className='all'>
@@ -406,33 +453,41 @@ export default function Join() {
                 </label>
               </div>
 
-              <div className="terms">
-                <label htmlFor="terms01">
-                  <input type="checkbox" name='terms01' id='terms01' required onChange={(e) => changeSelect(e.target.checked, e.target.name)} checked={agreeList.includes('terms01')?true:false}/>
-                  이용약관 동의<span> (필수)</span>
-                </label>
+              <ul className="terms">
+                <li>
+                  <label htmlFor="terms01">
+                    <input type="checkbox" name='terms01' id='terms01' required onChange={(e) => changeSelect(e.target.checked, e.target.name)} checked={agreeList.includes('terms01')?true:false}/>
+                    이용약관 동의<span> (필수)</span>
+                  </label>
+                </li>
 
-                <label htmlFor="terms02">
-                  <input type="checkbox" name='terms02' id='terms02' required onChange={(e) => changeSelect(e.target.checked, e.target.name)} checked={agreeList.includes('terms02')?true:false}/>
-                  개인정보의 수집 및 이용에 관한 동의<span> (필수)</span>
-                </label>
+                <li>
+                  <label htmlFor="terms02">
+                    <input type="checkbox" name='terms02' id='terms02' required onChange={(e) => changeSelect(e.target.checked, e.target.name)} checked={agreeList.includes('terms02')?true:false}/>
+                    개인정보의 수집 및 이용에 관한 동의<span> (필수)</span>
+                  </label>
+                </li>
 
-                <label htmlFor="terms03">
-                  <input type="checkbox" name='terms03' id='terms03' onChange={(e) => changeSelect(e.target.checked, e.target.name)} checked={agreeList.includes('terms03')?true:false}/>
-                  개인정보수집 및 활용에 대한 동의 (선택) 
-                </label>
+                <li>
+                  <label htmlFor="terms03">
+                    <input type="checkbox" name='terms03' id='terms03' onChange={(e) => changeSelect(e.target.checked, e.target.name)} checked={agreeList.includes('terms03')?true:false}/>
+                    개인정보수집 및 활용에 대한 동의 (선택) 
+                  </label>
+                </li>
 
+                <li>
                 <label htmlFor="terms04">
                   <input type="checkbox" name='terms04' id='terms04' onChange={(e) => changeSelect(e.target.checked, e.target.name)} checked={agreeList.includes('terms04')?true:false}/>
                   혜택 알림 이메일, 문자 수신 동의 (선택)
                 </label>
-              </div>
-            </div>
+              </li>
+            </ul>
+          </div>
           </TermsBox>
 
         <div className="button_area">
-          <Button disabled={buttonDisable ? true:false}>가입하기</Button>
-          <Button>취소</Button>
+          <Button onClick={GoJoin} styleboolean={btnAllow} disabled={btnAllow ? true:false}>가입하기</Button>
+          <Button type='button' onClick={CancleBtn}>취소</Button>
         </div>
       </div>
     </JoinBox>
